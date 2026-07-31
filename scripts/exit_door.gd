@@ -5,8 +5,11 @@ class_name ExitDoor
 ## here when a KeyDoorObjective targets it, then calls unlock() once that
 ## objective's key is picked up. While locked the door blocks line of
 ## sight like cover (Vision Blockers layer only) but never blocks
-## movement — the area stays walkable for player and knights alike; only
-## the player, and only once unlocked, advances the level.
+## movement — the area stays walkable for player and knights alike.
+## Reaching the door only advances the stage once every objective in the
+## level's LevelObjectives is complete, checked independently of this
+## door's own lock state so future objective types that never touch a
+## door still gate the exit.
 
 const LOCKED_COLOR := Color(0.5, 0.35, 0.1, 1.0)
 const UNLOCKED_COLOR := Color(0.8, 0.7, 0.25, 1.0)
@@ -34,10 +37,17 @@ func unlock() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if _locked or not body.is_in_group("player"):
+	if not body.is_in_group("player") or not _objectives_complete():
 		return
 	_play_open_placeholder()
-	GameManager.trigger_victory()
+	GameManager.complete_stage()
+
+
+func _objectives_complete() -> bool:
+	var level_objectives := get_tree().get_first_node_in_group("level_objectives") as LevelObjectives
+	if level_objectives == null:
+		return true
+	return level_objectives.completed_count >= level_objectives.total()
 
 
 func _update_visual() -> void:

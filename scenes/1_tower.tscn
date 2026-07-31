@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/key_door_objective.gd" id="13_key_door_objective"]
 
 [sub_resource type="Resource" id="Resource_tower_key_door"]
+resource_local_to_scene = true
 script = ExtResource("13_key_door_objective")
 id = &"tower_key_door"
 label = "Find the key and open the locked exit door"
