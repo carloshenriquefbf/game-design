@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://b8atvkaickuke"]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" uid="uid://v2wmegd5tn5g" path="res://sprites/knight/Warrior_Idle.png" id="1_3i0j8"]
-[ext_resource type="Script" uid="uid://b7pwc5g4lau3o" path="res://scripts/knight.gd" id="1_qxgmm"]
-[ext_resource type="Texture2D" uid="uid://bgw8bbt316oj4" path="res://sprites/knight/Warrior_Run.png" id="2_qxgmm"]
+[ext_resource type="Texture2D" path="res://sprites/knight/Warrior_Idle.png" id="1_3i0j8"]
+[ext_resource type="Script" path="res://scripts/knight.gd" id="1_qxgmm"]
+[ext_resource type="Texture2D" path="res://sprites/knight/Warrior_Run.png" id="2_qxgmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3i0j8")
@@ -134,3 +134,10 @@ shape = SubResource("RectangleShape2D_4ahnf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone" unique_id=184717939]
 polygon = PackedVector2Array(128, -64, 168, -32, 176, 0, 168, 32, 128, 64, 16, 16, 16, -16)
+
+[node name="PatrolRoute" type="Node2D" parent="." unique_id=2076702173]
+
+[node name="Point1" type="Marker2D" parent="PatrolRoute" unique_id=61880057]
+
+[node name="Point2" type="Marker2D" parent="PatrolRoute" unique_id=619276097]
+position = Vector2(500, 0)
