@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://btaryeskvx3vq"]
+
+[ext_resource type="Script" uid="uid://c5pvgi1yr7swr" path="res://scripts/exit_door.gd" id="1_syxuu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
+size = Vector2(64, 64)
+
+[node name="ExitDoor" type="Node2D" unique_id=2060408876]
+script = ExtResource("1_syxuu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=951196398]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1914610200]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_4ahnf")
+debug_color = Color(0.9661407, 0, 0.48533386, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

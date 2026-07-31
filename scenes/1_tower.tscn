@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0a4hptgfu6wa"]
+
+[ext_resource type="PackedScene" uid="uid://b8atvkaickuke" path="res://scenes/knight.tscn" id="1_33s7m"]
+[ext_resource type="PackedScene" uid="uid://btaryeskvx3vq" path="res://scenes/exit_door.tscn" id="2_d1kng"]
+[ext_resource type="PackedScene" uid="uid://dwu0flcm2xkqa" path="res://scenes/player.tscn" id="4_33s7m"]
+[ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
+
+[node name="BaseMap" unique_id=367366722 instance=ExtResource("4_fw5wf")]
+
+[node name="ExitDoor" parent="." index="2" unique_id=2060408876 instance=ExtResource("2_d1kng")]
+position = Vector2(1024, -32)
+
+[node name="Knight" parent="." index="3" unique_id=675437740 instance=ExtResource("1_33s7m")]
+position = Vector2(80, 96)
+
+[node name="Player" parent="." index="4" unique_id=1546115382 instance=ExtResource("4_33s7m")]
+position = Vector2(1056, 536)
