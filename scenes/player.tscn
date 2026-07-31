@@ -129,3 +129,9 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=571488780]
 position = Vector2(1, 8)
 shape = SubResource("RectangleShape2D_4ahnf")
+
+[node name="InvisibilityTimer" type="Timer" parent="." unique_id=1833963904]
+
+[node name="DrinkSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="WindSound" type="AudioStreamPlayer2D" parent="."]

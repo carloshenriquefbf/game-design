@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/base_item.tscn" id="1_base"]
+
+[node name="InvisibilityPotion" instance=ExtResource("1_base")]
+item_id = &"invisibility_potion"
+pickup_label = "[som: pegar poção]"
+
+[node name="ColorRect" parent="."]
+color = Color(0.55, 0.2, 0.85, 1)

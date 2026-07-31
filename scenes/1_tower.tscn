@@ -5,6 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://dwu0flcm2xkqa" path="res://scenes/player.tscn" id="4_33s7m"]
 [ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
 [ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="5_wall"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://scenes/invisibility_potion.tscn" id="7_potion"]
+[ext_resource type="PackedScene" path="res://scenes/wind_bag.tscn" id="8_windbag"]
+[ext_resource type="PackedScene" path="res://scenes/candle.tscn" id="9_candle"]
+[ext_resource type="PackedScene" path="res://scenes/key.tscn" id="11_key"]
+[ext_resource type="Script" path="res://scripts/level_objectives.gd" id="12_level_objectives"]
+[ext_resource type="Script" path="res://scripts/key_door_objective.gd" id="13_key_door_objective"]
+
+[sub_resource type="Resource" id="Resource_tower_key_door"]
+script = ExtResource("13_key_door_objective")
+id = &"tower_key_door"
+label = "Find the key and open the locked exit door"
+key_item_id = &"key"
+door_path = NodePath("../ExitDoor")
 
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("4_fw5wf")]
 
@@ -51,8 +65,27 @@ position = Vector2(544, 560)
 
 [node name="Wall1" parent="." index="6" unique_id=384756123 instance=ExtResource("5_wall")]
 position = Vector2(192, 325)
-size = Vector2(20, 374)
 
 [node name="Wall2" parent="." index="7" unique_id=384756124 instance=ExtResource("5_wall")]
 position = Vector2(912, 325)
-size = Vector2(20, 374)
+
+[node name="HUD" parent="." index="8" unique_id=131069233 instance=ExtResource("6_hud")]
+
+[node name="InvisibilityPotion" parent="." index="9" unique_id=1719738854 instance=ExtResource("7_potion")]
+position = Vector2(544, 320)
+
+[node name="WindBag" parent="." index="10" unique_id=1039679693 instance=ExtResource("8_windbag")]
+position = Vector2(700, 560)
+
+[node name="Candle1" parent="." index="11" unique_id=2045788353 instance=ExtResource("9_candle")]
+position = Vector2(96, 96)
+
+[node name="Candle2" parent="." index="12" unique_id=730831515 instance=ExtResource("9_candle")]
+position = Vector2(1120, 96)
+
+[node name="Key" parent="." instance=ExtResource("11_key")]
+position = Vector2(544, 250)
+
+[node name="LevelObjectives" type="Node" parent="."]
+script = ExtResource("12_level_objectives")
+objectives = Array[Objective]([SubResource("Resource_tower_key_door")])

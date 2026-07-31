@@ -9,8 +9,8 @@ const CONE_SEGMENTS := 12
 @export var speed: float = 100.0
 @export var vision_range: float = 220.0
 @export var vision_angle_degrees: float = 70.0
-@export var capture_time: float = 8.0
 @export var patrol_loop: bool = false
+@export var dimmed_vision_multiplier: float = 0.75
 
 @onready var animated_sprite: AnimatedSprite2D = $Sprite
 @onready var patrol_route: Node2D = get_node_or_null("PatrolRoute")
@@ -28,15 +28,31 @@ var facing_direction: Vector2 = Vector2.RIGHT
 var player_detected: bool = false
 
 var _player: Node2D = null
-var _detection_time: float = 0.0
-var _detection_capture_triggered: bool = false
 var _contact_capture_triggered: bool = false
+var _dimmed: bool = false
+var _base_vision_range: float
+var _base_vision_angle_degrees: float
+var _base_cone_color: Color
 
 
 func _ready() -> void:
 	_collect_waypoints()
 	state = State.PATROL if waypoints.size() >= 2 else State.IDLE
 	_player = get_tree().get_first_node_in_group("player")
+
+	_base_vision_range = vision_range
+	_base_vision_angle_degrees = vision_angle_degrees
+	_base_cone_color = vision_polygon.color
+
+	EventBus.candles_extinguished.connect(_dim_vision)
+
+
+func _dim_vision() -> void:
+	if _dimmed:
+		return
+	_dimmed = true
+	vision_range = _base_vision_range * dimmed_vision_multiplier
+	vision_angle_degrees = _base_vision_angle_degrees * dimmed_vision_multiplier
 
 
 func _physics_process(delta: float) -> void:
@@ -139,30 +155,25 @@ func _update_vision_polygon() -> void:
 	vision_polygon.polygon = points
 
 
-func _update_detection(delta: float) -> void:
+func _update_detection(_delta: float) -> void:
 	if _player == null:
 		_player = get_tree().get_first_node_in_group("player")
 		if _player == null:
 			return
 
-	var has_los := _can_see_player()
+	var has_los: bool = _can_see_player() and not _player.is_invisible()
+	SuspicionManager.report_visibility(self, has_los)
 
 	if has_los:
 		if not player_detected:
 			player_detected = true
-			_detection_time = 0.0
-			_detection_capture_triggered = false
 			EventBus.player_detected.emit(self)
 			_play_alert_placeholder()
-
-		_detection_time += delta
-		if _detection_time >= capture_time and not _detection_capture_triggered:
-			_detection_capture_triggered = true
-			EventBus.player_lost.emit(self)
 	else:
-		player_detected = false
-		_detection_time = 0.0
-		_detection_capture_triggered = false
+		if player_detected:
+			player_detected = false
+			EventBus.player_lost.emit(self)
+			print("[perception] lost sight of player")
 
 
 func _update_contact_capture() -> void:
@@ -178,7 +189,7 @@ func _update_contact_capture() -> void:
 	if touching_player:
 		if not _contact_capture_triggered:
 			_contact_capture_triggered = true
-			EventBus.player_lost.emit(self)
+			EventBus.player_captured.emit(self)
 	else:
 		_contact_capture_triggered = false
 
