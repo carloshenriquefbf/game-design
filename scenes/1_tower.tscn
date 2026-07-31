@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://d0a4hptgfu6wa"]
 
-[ext_resource type="PackedScene" uid="uid://b8atvkaickuke" path="res://scenes/knight.tscn" id="1_33s7m"]
+[ext_resource type="PackedScene" uid="uid://dg8uf4kayof5p" path="res://scenes/knight.tscn" id="1_33s7m"]
 [ext_resource type="PackedScene" uid="uid://btaryeskvx3vq" path="res://scenes/exit_door.tscn" id="2_d1kng"]
 [ext_resource type="PackedScene" uid="uid://dwu0flcm2xkqa" path="res://scenes/player.tscn" id="4_33s7m"]
 [ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
+[ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="5_wall"]
 
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("4_fw5wf")]
 
@@ -11,7 +12,47 @@
 position = Vector2(1024, -32)
 
 [node name="Knight" parent="." index="3" unique_id=675437740 instance=ExtResource("1_33s7m")]
-position = Vector2(80, 96)
+position = Vector2(64, 64)
+patrol_loop = true
 
-[node name="Player" parent="." index="4" unique_id=1546115382 instance=ExtResource("4_33s7m")]
-position = Vector2(1056, 536)
+[node name="PatrolRoute" type="Node2D" parent="Knight" index="5" unique_id=201949296]
+
+[node name="Marker2D2" type="Marker2D" parent="Knight/PatrolRoute" index="0" unique_id=971748254]
+position = Vector2(384, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="Knight/PatrolRoute" index="1" unique_id=648260337]
+position = Vector2(384, 512)
+
+[node name="Marker2D4" type="Marker2D" parent="Knight/PatrolRoute" index="2" unique_id=644676312]
+position = Vector2(0, 512)
+
+[node name="Marker2D5" type="Marker2D" parent="Knight/PatrolRoute" index="3" unique_id=479281330]
+
+[node name="Knight2" parent="." index="4" unique_id=1205043324 instance=ExtResource("1_33s7m")]
+position = Vector2(1088, 64)
+patrol_loop = true
+
+[node name="PatrolRoute" type="Node2D" parent="Knight2" index="5" unique_id=1420477489]
+
+[node name="Marker2D" type="Marker2D" parent="Knight2/PatrolRoute" index="0" unique_id=1095676505]
+position = Vector2(40, -24)
+
+[node name="Marker2D2" type="Marker2D" parent="Knight2/PatrolRoute" index="1" unique_id=51926772]
+position = Vector2(0, 512)
+
+[node name="Marker2D3" type="Marker2D" parent="Knight2/PatrolRoute" index="2" unique_id=709747739]
+position = Vector2(-448, 512)
+
+[node name="Marker2D4" type="Marker2D" parent="Knight2/PatrolRoute" index="3" unique_id=2023044869]
+position = Vector2(-448, 0)
+
+[node name="Player" parent="." index="5" unique_id=1546115382 instance=ExtResource("4_33s7m")]
+position = Vector2(544, 560)
+
+[node name="Wall1" parent="." index="6" unique_id=384756123 instance=ExtResource("5_wall")]
+position = Vector2(192, 325)
+size = Vector2(20, 374)
+
+[node name="Wall2" parent="." index="7" unique_id=384756124 instance=ExtResource("5_wall")]
+position = Vector2(912, 325)
+size = Vector2(20, 374)

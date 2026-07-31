@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dg8uf4kayof5p"]
 
-[ext_resource type="Texture2D" path="res://sprites/knight/Warrior_Idle.png" id="1_3i0j8"]
-[ext_resource type="Script" path="res://scripts/knight.gd" id="1_qxgmm"]
-[ext_resource type="Texture2D" path="res://sprites/knight/Warrior_Run.png" id="2_qxgmm"]
+[ext_resource type="Texture2D" uid="uid://v2wmegd5tn5g" path="res://sprites/knight/Warrior_Idle.png" id="1_3i0j8"]
+[ext_resource type="Script" uid="uid://b7pwc5g4lau3o" path="res://scripts/knight.gd" id="1_qxgmm"]
+[ext_resource type="Texture2D" uid="uid://bgw8bbt316oj4" path="res://sprites/knight/Warrior_Run.png" id="2_qxgmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3i0j8")
@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d2wvv")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -110,24 +110,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qfm1y")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
-size = Vector2(34, 76.75)
+size = Vector2(34, 55.75)
 
 [node name="Knight" type="CharacterBody2D" unique_id=675437740]
 script = ExtResource("1_qxgmm")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=842394305]
 sprite_frames = SubResource("SpriteFrames_4ahnf")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Body" type="CollisionShape2D" parent="." unique_id=571488780]
-position = Vector2(0, -1.375)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_4ahnf")
 
 [node name="VisionCone" type="Node2D" parent="." unique_id=272044866]
@@ -135,14 +135,7 @@ shape = SubResource("RectangleShape2D_4ahnf")
 [node name="Polygon2D" type="Polygon2D" parent="VisionCone" unique_id=184717939]
 color = Color(1, 0.9, 0.2, 0.25)
 
-[node name="LineOfSightRay" type="RayCast2D" parent="." unique_id=3987521440]
+[node name="LineOfSightRay" type="RayCast2D" parent="." unique_id=-307445856]
 collision_mask = 16
 
 [node name="AlertSound" type="AudioStreamPlayer2D" parent="." unique_id=1298475062]
-
-[node name="PatrolRoute" type="Node2D" parent="." unique_id=2076702173]
-
-[node name="Point1" type="Marker2D" parent="PatrolRoute" unique_id=61880057]
-
-[node name="Point2" type="Marker2D" parent="PatrolRoute" unique_id=619276097]
-position = Vector2(500, 0)
