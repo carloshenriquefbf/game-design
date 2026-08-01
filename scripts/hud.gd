@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var suspicion_bar: ProgressBar = $Root/TopLeft/SuspicionBar
+@onready var suspicion_bar: TextureProgressBar = $Root/TopLeft/SuspicionBar
 @onready var power_up_icon: TextureRect = $Root/BottomLeft/PowerUpSlot/PowerUpIcon
 @onready var power_up_timer_label: Label = $Root/BottomLeft/PowerUpSlot/PowerUpTimerLabel
 @onready var inventory_icon: TextureRect = $Root/BottomLeft/InventorySlot/InventoryIcon
