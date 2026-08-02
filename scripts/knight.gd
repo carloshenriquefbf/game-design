@@ -15,6 +15,7 @@ const LOOK_AROUND_ANGLE_HARD_CEILING_DEGREES := 80.0
 @export var look_around_sweep_angle_degrees: float = 45.0
 @export var look_around_sweep_duration: float = 2.0
 @export var look_around_idle_interval: float = 4.0
+@export var invisibility_cone_color: Color = Color(0.5, 0.5, 0.5, 0.25)
 
 @onready var animated_sprite: AnimatedSprite2D = $Sprite
 @onready var patrol_route: Node2D = get_node_or_null("PatrolRoute")
@@ -46,7 +47,14 @@ var _idle_look_around_timer: float = 0.0
 
 func _ready() -> void:
 	_collect_waypoints()
-	state = State.PATROL if waypoints.size() >= 2 else State.IDLE
+	if waypoints.size() >= 2:
+		state = State.PATROL
+		var to_first := waypoints[0] - global_position
+		if to_first.length() > 0.001:
+			facing_direction = to_first.normalized()
+		_start_look_around()
+	else:
+		state = State.IDLE
 	_player = get_tree().get_first_node_in_group("player")
 
 	_base_vision_range = vision_range
@@ -54,6 +62,20 @@ func _ready() -> void:
 	_base_cone_color = vision_polygon.color
 
 	EventBus.candles_extinguished.connect(_dim_vision)
+	EventBus.power_up_activated.connect(_on_power_up_activated)
+	EventBus.power_up_expired.connect(_on_power_up_expired)
+
+
+func _on_power_up_activated(item_id: StringName, _duration: float) -> void:
+	if item_id != &"invisibility_potion":
+		return
+	vision_polygon.color = invisibility_cone_color
+
+
+func _on_power_up_expired(item_id: StringName) -> void:
+	if item_id != &"invisibility_potion":
+		return
+	vision_polygon.color = _base_cone_color
 
 
 func _dim_vision() -> void:

@@ -6,8 +6,8 @@ extends Node
 
 signal suspicion_changed(value: float)
 
-@export var time_to_max: float = 2.0
-@export var time_to_drain: float = 4.0
+@export var time_to_max: float = 1.0
+@export var time_to_drain: float = 2 * time_to_max
 
 var suspicion: float = 0.0
 
