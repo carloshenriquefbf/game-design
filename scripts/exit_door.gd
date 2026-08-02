@@ -28,9 +28,18 @@ func _ready() -> void:
 	_update_visual()
 	EventBus.all_objectives_completed.connect(_on_all_objectives_completed)
 
-	# Snapshot the initial state so a level with zero objectives (or one
-	# whose LevelObjectives already finished _ready before this door did)
-	# still opens — the signal above only catches completions from here on.
+	# Deferred so this runs after every node in the scene (including
+	# LevelObjectives, wherever it sits in sibling order) has finished its
+	# own _ready() — a same-frame group lookup here would race
+	# LevelObjectives.add_to_group() and could see it as empty even when a
+	# real objective exists.
+	call_deferred("_snapshot_initial_objectives_state")
+
+
+# Snapshot the initial state so a level with zero objectives (or one whose
+# LevelObjectives already completed before this ran) still opens — the
+# signal above only catches completions from here on.
+func _snapshot_initial_objectives_state() -> void:
 	var level_objectives := get_tree().get_first_node_in_group("level_objectives") as LevelObjectives
 	if level_objectives == null or level_objectives.completed_count >= level_objectives.total():
 		_objectives_complete = true
