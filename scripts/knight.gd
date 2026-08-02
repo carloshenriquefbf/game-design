@@ -47,14 +47,7 @@ var _idle_look_around_timer: float = 0.0
 
 func _ready() -> void:
 	_collect_waypoints()
-	if waypoints.size() >= 2:
-		state = State.PATROL
-		var to_first := waypoints[0] - global_position
-		if to_first.length() > 0.001:
-			facing_direction = to_first.normalized()
-		_start_look_around()
-	else:
-		state = State.IDLE
+	state = State.PATROL if waypoints.size() >= 2 else State.IDLE
 	_player = get_tree().get_first_node_in_group("player")
 
 	_base_vision_range = vision_range
