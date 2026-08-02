@@ -1,4 +1,4 @@
-extends Control
+extends "res://scripts/base_screen.gd"
 ## Full-screen instructions view. Reached from the main menu; instances the
 ## shared instructions_content.tscn for the actual item explanations.
 
@@ -11,6 +11,8 @@ const MAIN_MENU_SCENE := "res://scenes/main_menu.tscn"
 
 
 func _ready() -> void:
+	super._ready()
+
 	back_button.pressed.connect(_on_back_pressed)
 	click_sound.stream = click_sfx
 

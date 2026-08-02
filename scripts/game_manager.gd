@@ -9,22 +9,9 @@ const MAIN_MENU_SCENE := "res://scenes/main_menu.tscn"
 
 var state: GameState = GameState.PLAYING
 
-var _shown_item_instructions: Dictionary = {}
-
 
 func _ready() -> void:
 	EventBus.player_captured.connect(trigger_defeat)
-
-
-## Returns true (and remembers it) the first time this item_id is passed in
-## for the whole lifetime of the running game process, so pickup
-## instructions only ever show once per playthrough, even across level
-## restarts and retries.
-func should_show_item_instructions(item_id: StringName) -> bool:
-	if _shown_item_instructions.has(item_id):
-		return false
-	_shown_item_instructions[item_id] = true
-	return true
 
 
 func restart_level() -> void:

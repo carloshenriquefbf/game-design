@@ -5,7 +5,7 @@ extends Node2D
 ## Shown in the on-screen toast every time this item is picked up.
 @export var pickup_message: String = ""
 ## Appended to pickup_message, but only the first time this item_id is
-## ever picked up in the running game (see GameManager.should_show_item_instructions).
+## ever picked up in the running game (see HUD's item-instructions tracking).
 @export var instructions: String = ""
 
 @onready var pickup_sound: AudioStreamPlayer2D = $PickupSound

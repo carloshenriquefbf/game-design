@@ -65,10 +65,6 @@ func is_invisible() -> bool:
 	return _invisible
 
 
-func get_invisibility_time_left() -> float:
-	return invisibility_timer.time_left if _invisible else 0.0
-
-
 func _drink_invisibility_potion() -> void:
 	if not _consume_item(INVISIBILITY_POTION):
 		return

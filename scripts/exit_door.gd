@@ -1,15 +1,15 @@
 extends Node2D
 class_name ExitDoor
 ## Level exit trigger. Unlocked by default so levels without a key/door
-## objective just complete the level on touch. LevelObjectives locks it
-## here when a KeyDoorObjective targets it, then calls unlock() once that
-## objective's key is picked up. While locked the door blocks line of
-## sight like cover (Vision Blockers layer only) but never blocks
-## movement — the area stays walkable for player and knights alike.
-## Reaching the door only advances the stage once every objective in the
-## level's LevelObjectives is complete, checked independently of this
-## door's own lock state so future objective types that never touch a
-## door still gate the exit.
+## objective just complete the level on touch. A KeyDoorObjective that
+## targets this door locks it during its own setup(), then calls unlock()
+## once its key is picked up. While locked the door blocks line of sight
+## like cover (Vision Blockers layer only) but never blocks movement — the
+## area stays walkable for player and knights alike.
+## Reaching the door only advances the stage once EventBus.
+## all_objectives_completed has fired for the level's LevelObjectives,
+## checked independently of this door's own lock state so future objective
+## types that never touch a door still gate the exit.
 
 const CLOSED_TEXTURE := preload("res://sprites/assets/door/door-closed.png")
 const OPEN_TEXTURE := preload("res://sprites/assets/door/door-open.png")
@@ -21,10 +21,19 @@ const OPEN_TEXTURE := preload("res://sprites/assets/door/door-open.png")
 @onready var next_stage_void: ColorRect = $NextStageVoid
 
 var _locked: bool = false
+var _objectives_complete: bool = false
 
 
 func _ready() -> void:
 	_update_visual()
+	EventBus.all_objectives_completed.connect(_on_all_objectives_completed)
+
+	# Snapshot the initial state so a level with zero objectives (or one
+	# whose LevelObjectives already finished _ready before this door did)
+	# still opens — the signal above only catches completions from here on.
+	var level_objectives := get_tree().get_first_node_in_group("level_objectives") as LevelObjectives
+	if level_objectives == null or level_objectives.completed_count >= level_objectives.total():
+		_objectives_complete = true
 
 
 func set_locked(locked: bool) -> void:
@@ -38,17 +47,14 @@ func unlock() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("player") or not _objectives_complete():
+	if not body.is_in_group("player") or not _objectives_complete:
 		return
 	_play_open_placeholder()
 	GameManager.complete_stage()
 
 
-func _objectives_complete() -> bool:
-	var level_objectives := get_tree().get_first_node_in_group("level_objectives") as LevelObjectives
-	if level_objectives == null:
-		return true
-	return level_objectives.completed_count >= level_objectives.total()
+func _on_all_objectives_completed() -> void:
+	_objectives_complete = true
 
 
 func _update_visual() -> void:

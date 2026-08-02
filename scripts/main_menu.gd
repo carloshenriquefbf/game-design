@@ -1,4 +1,4 @@
-extends Control
+extends "res://scripts/base_screen.gd"
 ## Placeholder audio hook: drop a real AudioStream into click_sfx/menu_music
 ## in the editor when the final assets land — code doesn't need to change.
 
@@ -19,6 +19,8 @@ const QUIT_SFX_DELAY: float = 0.15
 
 
 func _ready() -> void:
+	super._ready()
+
 	play_button.pressed.connect(_on_play_pressed)
 	instructions_button.pressed.connect(_on_instructions_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)

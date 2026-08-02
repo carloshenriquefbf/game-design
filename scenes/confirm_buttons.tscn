@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/confirm_buttons.gd" id="1_confirm"]
+
+[node name="ConfirmButtons" type="HBoxContainer"]
+theme_override_constants/separation = 12
+alignment = 1
+script = ExtResource("1_confirm")
+
+[node name="YesButton" type="Button" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(94, 48)
+text = "Sim"
+
+[node name="NoButton" type="Button" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(94, 48)
+text = "Não"

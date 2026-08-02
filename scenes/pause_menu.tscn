@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/instructions_modal.tscn" id="2_modal"]
+[ext_resource type="PackedScene" path="res://scenes/confirm_buttons.tscn" id="3_confirm"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 layer = 10
@@ -80,19 +81,7 @@ layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ConfirmButtons" type="HBoxContainer" parent="Root/ConfirmPanel"]
+[node name="ConfirmButtons" parent="Root/ConfirmPanel" instance=ExtResource("3_confirm")]
 layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="YesButton" type="Button" parent="Root/ConfirmPanel/ConfirmButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(94, 48)
-text = "Sim"
-
-[node name="NoButton" type="Button" parent="Root/ConfirmPanel/ConfirmButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(94, 48)
-text = "Não"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]

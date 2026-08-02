@@ -22,8 +22,7 @@ const QUIT_GAME_CONFIRM_TEXT := "Todo o progresso será perdido.\nTem certeza qu
 @onready var instructions_modal: Control = $Root/InstructionsModal
 @onready var confirm_panel: VBoxContainer = $Root/ConfirmPanel
 @onready var confirm_label: Label = $Root/ConfirmPanel/ConfirmLabel
-@onready var confirm_yes_button: Button = $Root/ConfirmPanel/ConfirmButtons/YesButton
-@onready var confirm_no_button: Button = $Root/ConfirmPanel/ConfirmButtons/NoButton
+@onready var confirm_buttons: ConfirmButtons = $Root/ConfirmPanel/ConfirmButtons
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 
 var _pending_confirm_action: ConfirmAction = ConfirmAction.NONE
@@ -37,8 +36,8 @@ func _ready() -> void:
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	quit_game_button.pressed.connect(_on_quit_game_pressed)
 	instructions_modal.close_requested.connect(_on_instructions_modal_closed)
-	confirm_yes_button.pressed.connect(_on_confirm_yes_pressed)
-	confirm_no_button.pressed.connect(_on_confirm_no_pressed)
+	confirm_buttons.confirmed.connect(_on_confirm_yes_pressed)
+	confirm_buttons.cancelled.connect(_on_confirm_no_pressed)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,38 +1,16 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/base_end_screen.gd" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/base_screen.tscn" id="1_screen"]
+[ext_resource type="Script" path="res://scripts/base_end_screen.gd" id="2_base"]
+[ext_resource type="PackedScene" path="res://scenes/confirm_buttons.tscn" id="3_confirm"]
 
-[node name="BaseEndScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_base")
+[node name="BaseEndScreen" instance=ExtResource("1_screen")]
+script = ExtResource("2_base")
+background_color = Color(0.1, 0.1, 0.1, 1.0)
+title_anchor_top = 0.32
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 1.0)
-
-[node name="Title" type="Label" parent="."]
+[node name="Title" parent="." index="1"]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.32
-anchor_right = 0.5
-anchor_bottom = 0.32
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -62,18 +40,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
 text = "Menu principal"
 
-[node name="ConfirmButtons" type="HBoxContainer" parent="Buttons"]
+[node name="ConfirmButtons" parent="Buttons" instance=ExtResource("3_confirm")]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="YesButton" type="Button" parent="Buttons/ConfirmButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(94, 48)
-text = "Sim"
-
-[node name="NoButton" type="Button" parent="Buttons/ConfirmButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(94, 48)
-text = "Não"
