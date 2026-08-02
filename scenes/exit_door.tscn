@@ -16,15 +16,15 @@ position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4ahnf")
 debug_color = Color(0.9661407, 0, 0.48533386, 0.41960785)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=709013958]
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_open")
 
-[node name="VisionBlocker" type="StaticBody2D" parent="."]
+[node name="VisionBlocker" type="StaticBody2D" parent="." unique_id=236151572]
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionBlocker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionBlocker" unique_id=1330476568]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4ahnf")
 disabled = true

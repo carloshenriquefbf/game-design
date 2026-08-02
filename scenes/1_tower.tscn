@@ -27,7 +27,7 @@ label = "Find the key and open the locked exit door"
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("4_fw5wf")]
 
 [node name="ExitDoor" parent="." index="2" unique_id=2060408876 instance=ExtResource("2_d1kng")]
-position = Vector2(1138, -36)
+position = Vector2(1138, -32)
 
 [node name="Knight" parent="." index="3" unique_id=675437740 instance=ExtResource("1_33s7m")]
 position = Vector2(71, 72)
