@@ -68,10 +68,13 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.IDLE:
 			velocity = Vector2.ZERO
+			_process_idle(delta)
 		State.PATROL:
 			_process_patrol()
 		State.ALERT:
 			_process_alert()
+		State.LOOK_AROUND:
+			velocity = Vector2.ZERO
 
 	move_and_slide()
 	_update_animation()
@@ -102,10 +105,21 @@ func _process_patrol() -> void:
 
 	if to_target.length() <= ARRIVAL_DISTANCE:
 		_advance_waypoint()
-		target = waypoints[current_waypoint_index]
-		to_target = target - global_position
+		var next_target := waypoints[current_waypoint_index]
+		var to_next := next_target - global_position
+		if to_next.length() > 0.001:
+			facing_direction = to_next.normalized()
+		_start_look_around()
+		return
 
 	velocity = to_target.normalized() * speed
+
+
+func _process_idle(delta: float) -> void:
+	_idle_look_around_timer += delta
+	if _idle_look_around_timer >= look_around_idle_interval:
+		_idle_look_around_timer = 0.0
+		_start_look_around()
 
 
 func _advance_waypoint() -> void:
@@ -126,6 +140,49 @@ func _advance_waypoint() -> void:
 func _process_alert() -> void:
 	# Stub: the vision cone / suspicion system will drive this state next.
 	velocity = Vector2.ZERO
+
+
+func _start_look_around() -> void:
+	if state == State.LOOK_AROUND:
+		return
+
+	_state_before_look_around = state
+	state = State.LOOK_AROUND
+	velocity = Vector2.ZERO
+	_look_around_base_angle = facing_direction.angle()
+
+	var half_angle := deg_to_rad(
+		clamp(look_around_sweep_angle_degrees, 0.0, LOOK_AROUND_ANGLE_HARD_CEILING_DEGREES)
+	) / 2.0
+	var quarter_duration := look_around_sweep_duration / 4.0
+
+	if _look_around_tween:
+		_look_around_tween.kill()
+
+	_look_around_tween = create_tween()
+	_look_around_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	_look_around_tween.tween_method(_set_look_around_offset, 0.0, half_angle, quarter_duration)
+	_look_around_tween.tween_method(
+		_set_look_around_offset, half_angle, -half_angle, quarter_duration * 2.0
+	)
+	_look_around_tween.tween_method(_set_look_around_offset, -half_angle, 0.0, quarter_duration)
+	_look_around_tween.finished.connect(_on_look_around_finished)
+
+
+func _set_look_around_offset(offset: float) -> void:
+	facing_direction = Vector2.RIGHT.rotated(_look_around_base_angle + offset)
+
+
+func _on_look_around_finished() -> void:
+	_look_around_tween = null
+	state = _state_before_look_around
+
+
+func _cancel_look_around() -> void:
+	if _look_around_tween:
+		_look_around_tween.kill()
+		_look_around_tween = null
+	state = _state_before_look_around
 
 
 func _update_animation() -> void:
@@ -178,6 +235,8 @@ func _update_detection(_delta: float) -> void:
 			player_detected = true
 			EventBus.player_detected.emit(self)
 			_play_alert_placeholder()
+		if state == State.LOOK_AROUND:
+			_cancel_look_around()
 	else:
 		if player_detected:
 			player_detected = false
