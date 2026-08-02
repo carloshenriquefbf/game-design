@@ -36,6 +36,10 @@ animations = [{
 }]
 
 [node name="Torch1" unique_id=98278672 instance=ExtResource("1_base")]
+light_radius = 75.0
+light_color = Color(1, 0.45, 0.15, 0.2)
+light_angle_degrees = 180.0
+light_origin = Vector2(-32.0, 1.5)
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_torch1")

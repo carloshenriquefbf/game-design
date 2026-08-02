@@ -2,8 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/base_illumination_asset.gd" id="1_base_illum"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_light"]
+blend_mode = 1
+
 [node name="BaseIlluminationAsset" type="Node2D" groups=["illumination"]]
 script = ExtResource("1_base_illum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "lit"
+
+[node name="Light" type="Polygon2D" parent="."]
+material = SubResource("CanvasItemMaterial_light")
