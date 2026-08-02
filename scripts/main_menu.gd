@@ -3,6 +3,7 @@ extends Control
 ## in the editor when the final assets land — code doesn't need to change.
 
 const FIRST_LEVEL_SCENE := "res://scenes/1_tower.tscn"
+const INSTRUCTIONS_SCENE := "res://scenes/instructions_screen.tscn"
 const QUIT_SFX_DELAY: float = 0.15
 
 ## Click sound for all buttons [som: clicar]. Placeholder until final asset lands.
@@ -13,11 +14,13 @@ const QUIT_SFX_DELAY: float = 0.15
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var play_button: Button = $Buttons/PlayButton
+@onready var instructions_button: Button = $Buttons/InstructionsButton
 @onready var quit_button: Button = $Buttons/QuitButton
 
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_pressed)
+	instructions_button.pressed.connect(_on_instructions_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 
 	click_sound.stream = click_sfx
@@ -28,6 +31,11 @@ func _ready() -> void:
 func _on_play_pressed() -> void:
 	_play_click_sfx()
 	SceneTransition.goto_scene(FIRST_LEVEL_SCENE)
+
+
+func _on_instructions_pressed() -> void:
+	_play_click_sfx()
+	SceneTransition.goto_scene(INSTRUCTIONS_SCENE)
 
 
 func _on_quit_pressed() -> void:

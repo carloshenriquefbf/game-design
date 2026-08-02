@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
 [ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="5_wall"]
 [ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="9_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://bvmqkwb2yqui5" path="res://scenes/invisibility_potion.tscn" id="7_potion"]
 [ext_resource type="PackedScene" uid="uid://bwtfx0ovr7ajw" path="res://scenes/wind_bag.tscn" id="8_windbag"]
 [ext_resource type="PackedScene" uid="uid://cus75iqwnp8ig" path="res://scenes/key.tscn" id="11_key"]
@@ -61,7 +62,9 @@ position = Vector2(632, 8)
 
 [node name="HUD" parent="." index="6" unique_id=131069233 instance=ExtResource("6_hud")]
 
-[node name="YSort" type="Node2D" parent="." index="7" unique_id=1730204739]
+[node name="PauseMenu" parent="." index="7" instance=ExtResource("9_pause_menu")]
+
+[node name="YSort" type="Node2D" parent="." index="8" unique_id=1730204739]
 y_sort_enabled = true
 
 [node name="ExitDoor" parent="YSort" index="0" unique_id=2060408876 instance=ExtResource("2_d1kng")]

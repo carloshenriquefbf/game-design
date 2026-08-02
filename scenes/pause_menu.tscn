@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/instructions_modal.tscn" id="2_modal"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 10
+process_mode = 3
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="ButtonsPanel" type="VBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="Root/ButtonsPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+text = "Continuar"
+
+[node name="InstructionsButton" type="Button" parent="Root/ButtonsPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+text = "Instruções"
+
+[node name="MainMenuButton" type="Button" parent="Root/ButtonsPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+text = "Menu Principal"
+
+[node name="QuitGameButton" type="Button" parent="Root/ButtonsPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+text = "Sair do Jogo"
+
+[node name="InstructionsModal" parent="Root" instance=ExtResource("2_modal")]
+visible = false
+
+[node name="ConfirmPanel" type="VBoxContainer" parent="Root"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ConfirmLabel" type="Label" parent="Root/ConfirmPanel"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmButtons" type="HBoxContainer" parent="Root/ConfirmPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="YesButton" type="Button" parent="Root/ConfirmPanel/ConfirmButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(94, 48)
+text = "Sim"
+
+[node name="NoButton" type="Button" parent="Root/ConfirmPanel/ConfirmButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(94, 48)
+text = "Não"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]

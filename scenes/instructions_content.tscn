@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b5pujecuonvbg" path="res://sprites/itens/key/keys_1_1.png" id="1_key"]
+[ext_resource type="Texture2D" uid="uid://cljep3okdmmmo" path="res://sprites/itens/potion/flasks_3_1.png" id="2_potion"]
+[ext_resource type="Texture2D" uid="uid://bc171w2wbg65k" path="res://sprites/itens/wind_bag/box_2_1.png" id="3_windbag"]
+
+[node name="InstructionsContent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="List" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="KeyRow" type="HBoxContainer" parent="Scroll/List"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Scroll/List/KeyRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_key")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Scroll/List/KeyRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Scroll/List/KeyRow/Text"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Chave"
+
+[node name="Body" type="Label" parent="Scroll/List/KeyRow/Text"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Abre a porta de saída da fase. Colete a chave e leve-a até a Porta de Saída trancada para destrancá-la."
+
+[node name="PotionRow" type="HBoxContainer" parent="Scroll/List"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Scroll/List/PotionRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_potion")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Scroll/List/PotionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Scroll/List/PotionRow/Text"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Poção de Invisibilidade"
+
+[node name="Body" type="Label" parent="Scroll/List/PotionRow/Text"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Deixa Manuela invisível para os guardas por um tempo limitado depois de bebida. Pressione Q para usá-la."
+
+[node name="WindBagRow" type="HBoxContainer" parent="Scroll/List"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Scroll/List/WindBagRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_windbag")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Scroll/List/WindBagRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Scroll/List/WindBagRow/Text"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Bolsa de Vento"
+
+[node name="Body" type="Label" parent="Scroll/List/WindBagRow/Text"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Apaga velas e tochas próximas e reduz a visão dos guardas ao redor. Pressione E para usá-la."

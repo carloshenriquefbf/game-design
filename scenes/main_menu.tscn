@@ -51,6 +51,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
 text = "Jogar"
 
+[node name="InstructionsButton" type="Button" parent="Buttons"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 48)
+text = "Instruções"
+
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
