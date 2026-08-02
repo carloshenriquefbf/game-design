@@ -19,20 +19,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TopLeft" type="VBoxContainer" parent="Root" unique_id=1759139846]
-layout_mode = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 236.0
-offset_bottom = 60.0
-
-[node name="SuspicionLabel" type="Label" parent="Root/TopLeft" unique_id=266167759]
-layout_mode = 2
-text = "Suspicion"
-
-[node name="SuspicionBar" type="TextureProgressBar" parent="Root/TopLeft" unique_id=1830813700]
+[node name="SuspicionBar" type="TextureProgressBar" parent="Root" unique_id=1830813700]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 72.0
+offset_right = 100.0
+offset_bottom = 92.0
+grow_horizontal = 2
 max_value = 100.0
 value = 0.0
 texture_under = ExtResource("2_5ysmq")

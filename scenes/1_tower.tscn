@@ -31,26 +31,26 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="LeftBorderWall" parent="." index="1"]
-offset_left = -10.0
+offset_left = -8.0
 offset_top = -5.0
-offset_right = 10.0
-offset_bottom = 725.0
+offset_right = 20.0
+offset_bottom = 735.0
 
 [node name="RightBorderWall" parent="." index="2"]
-offset_left = 1270.0
+offset_left = 1256.0
 offset_top = -5.0
-offset_right = 1290.0
-offset_bottom = 725.0
+offset_right = 1284.0
+offset_bottom = 730.0
 
 [node name="TopBorderWall" parent="." index="3"]
-offset_top = -10.0
 offset_right = 1280.0
-offset_bottom = 10.0
+offset_bottom = 68.0
 
 [node name="BottomBorderWall" parent="." index="4"]
-offset_top = 656.0
+offset_left = -8.0
+offset_top = 664.0
 offset_right = 1280.0
-offset_bottom = 724.0
+offset_bottom = 732.0
 
 [node name="MapBorder" parent="." index="5" unique_id=1747597444]
 visible = false
@@ -64,45 +64,46 @@ position = Vector2(632, 8)
 y_sort_enabled = true
 
 [node name="ExitDoor" parent="YSort" index="0" unique_id=2060408876 instance=ExtResource("2_d1kng")]
-position = Vector2(1144, 16)
+position = Vector2(1056, 0)
 
 [node name="Knight" parent="YSort" index="1" unique_id=675437740 instance=ExtResource("1_33s7m")]
-position = Vector2(71, 72)
+position = Vector2(104, 120)
 patrol_loop = true
 
 [node name="PatrolRoute" type="Node2D" parent="YSort/Knight" index="5" unique_id=201949296]
 
-[node name="Marker2D2" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="0" unique_id=971748254]
-position = Vector2(427, 0)
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="0" unique_id=703370714]
+position = Vector2(344, 8)
 
-[node name="Marker2D3" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="1" unique_id=648260337]
-position = Vector2(427, 576)
+[node name="Marker2D2" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="1" unique_id=896338560]
+position = Vector2(344, 496)
 
-[node name="Marker2D4" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="2" unique_id=644676312]
-position = Vector2(0, 576)
+[node name="Marker2D3" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="2" unique_id=1862790594]
+position = Vector2(-8, 520)
 
-[node name="Marker2D5" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="3" unique_id=479281330]
+[node name="Marker2D4" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="3" unique_id=614715571]
+position = Vector2(-8, 8)
 
 [node name="Knight2" parent="YSort" index="2" unique_id=1205043324 instance=ExtResource("1_33s7m")]
-position = Vector2(1168, 208)
+position = Vector2(1176, 128)
 patrol_loop = true
 
 [node name="PatrolRoute" type="Node2D" parent="YSort/Knight2" index="5" unique_id=1420477489]
 
-[node name="Marker2D" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="0" unique_id=1095676505]
-position = Vector2(44, -27)
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="0" unique_id=1796952006]
+position = Vector2(-344, 0)
 
-[node name="Marker2D2" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="1" unique_id=51926772]
-position = Vector2(0, 576)
+[node name="Marker2D2" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="1" unique_id=650027605]
+position = Vector2(-344, 488)
 
-[node name="Marker2D3" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="2" unique_id=709747739]
-position = Vector2(-498, 576)
+[node name="Marker2D3" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="2" unique_id=953658863]
+position = Vector2(40, 488)
 
-[node name="Marker2D4" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="3" unique_id=2023044869]
-position = Vector2(-498, 0)
+[node name="Marker2D4" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="3" unique_id=932408749]
+position = Vector2(40, 0)
 
 [node name="Player" parent="YSort" index="3" unique_id=1546115382 instance=ExtResource("4_33s7m")]
-position = Vector2(608, 592)
+position = Vector2(640, 584)
 
 [node name="Wall1" parent="YSort" index="4" unique_id=384756123 instance=ExtResource("5_wall")]
 position = Vector2(213, 553)
@@ -111,60 +112,52 @@ position = Vector2(213, 553)
 position = Vector2(1013, 553)
 
 [node name="InvisibilityPotion" parent="YSort" index="6" unique_id=1719738854 instance=ExtResource("7_potion")]
-position = Vector2(604, 360)
+position = Vector2(312, 352)
 
 [node name="WindBag" parent="YSort" index="7" unique_id=1039679693 instance=ExtResource("8_windbag")]
-position = Vector2(778, 630)
+position = Vector2(896, 352)
 
-[node name="Key" parent="YSort" index="8" unique_id=956618669 instance=ExtResource("11_key")]
-position = Vector2(604, 281)
-
-[node name="TorchTopLeft" parent="YSort" index="9" unique_id=824330000 instance=ExtResource("15_torch2")]
+[node name="TorchTopLeft" parent="YSort" index="8" unique_id=824330000 instance=ExtResource("15_torch2")]
 z_index = -1
 position = Vector2(340, 50)
+
+[node name="Key" parent="YSort" index="9" unique_id=956618669 instance=ExtResource("11_key")]
+position = Vector2(640, 128)
 
 [node name="TorchTopRight" parent="YSort" index="10" unique_id=1627182318 instance=ExtResource("15_torch2")]
 z_index = -1
 position = Vector2(940, 50)
 
-[node name="TorchBottomLeft" parent="YSort" index="11" unique_id=1664472371 instance=ExtResource("15_torch2")]
-z_index = -1
-position = Vector2(340, 670)
-
-[node name="TorchBottomRight" parent="YSort" index="12" unique_id=407458271 instance=ExtResource("15_torch2")]
-z_index = -1
-position = Vector2(940, 670)
-
-[node name="TorchWall1West" parent="YSort" index="13" unique_id=510935486 instance=ExtResource("14_torch1")]
+[node name="TorchWall1West" parent="YSort" index="11" unique_id=510935486 instance=ExtResource("14_torch1")]
 z_index = -1
 position = Vector2(200, 368)
 flip_h = true
 
-[node name="TorchWall1East" parent="YSort" index="14" unique_id=1562995618 instance=ExtResource("14_torch1")]
+[node name="TorchWall1East" parent="YSort" index="12" unique_id=1562995618 instance=ExtResource("14_torch1")]
 z_index = -1
 position = Vector2(240, 368)
 
-[node name="TorchWall2West" parent="YSort" index="15" unique_id=151347951 instance=ExtResource("14_torch1")]
+[node name="TorchWall2West" parent="YSort" index="13" unique_id=151347951 instance=ExtResource("14_torch1")]
 z_index = -1
 position = Vector2(1000, 368)
 flip_h = true
 
-[node name="TorchWall2East" parent="YSort" index="16" unique_id=499629886 instance=ExtResource("14_torch1")]
+[node name="TorchWall2East" parent="YSort" index="14" unique_id=499629886 instance=ExtResource("14_torch1")]
 z_index = -1
 position = Vector2(1040, 368)
 
-[node name="CandleNW" parent="YSort" index="17" unique_id=1151574542 instance=ExtResource("16_candle1")]
+[node name="CandleNW" parent="YSort" index="15" unique_id=1151574542 instance=ExtResource("16_candle1")]
 position = Vector2(300, 200)
 
-[node name="CandleNE" parent="YSort" index="18" unique_id=1735905831 instance=ExtResource("17_candle2")]
+[node name="CandleNE" parent="YSort" index="16" unique_id=1735905831 instance=ExtResource("17_candle2")]
 position = Vector2(900, 200)
 
-[node name="CandleSW" parent="YSort" index="19" unique_id=1167858367 instance=ExtResource("16_candle1")]
+[node name="CandleSW" parent="YSort" index="17" unique_id=1167858367 instance=ExtResource("16_candle1")]
 position = Vector2(300, 500)
 
-[node name="CandleSE" parent="YSort" index="20" unique_id=1631686690 instance=ExtResource("17_candle2")]
+[node name="CandleSE" parent="YSort" index="18" unique_id=1631686690 instance=ExtResource("17_candle2")]
 position = Vector2(900, 500)
 
-[node name="LevelObjectives" type="Node" parent="YSort" index="21" unique_id=515851744]
+[node name="LevelObjectives" type="Node" parent="YSort" index="19" unique_id=515851744]
 script = ExtResource("12_level_objectives")
 objectives = Array[ExtResource("15_2a2cg")]([SubResource("Resource_tower_key_door")])

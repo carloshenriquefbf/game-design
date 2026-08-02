@@ -1,7 +1,6 @@
 extends CanvasLayer
 
-@onready var suspicion_label: Label = $Root/TopLeft/SuspicionLabel
-@onready var suspicion_bar: TextureProgressBar = $Root/TopLeft/SuspicionBar
+@onready var suspicion_bar: TextureProgressBar = $Root/SuspicionBar
 @onready var potion_active_fill: ColorRect = $Root/BottomLeft/PotionSlot/ActiveFill
 @onready var potion_icon: TextureRect = $Root/BottomLeft/PotionSlot/Icon
 @onready var potion_timer_label: Label = $Root/BottomLeft/PotionSlot/TimerLabel
@@ -11,9 +10,18 @@ extends CanvasLayer
 
 const SLOT_HEIGHT := 48.0
 
+const SUSPICION_FADE_DURATION := 0.3
+## Below this fraction, a decreasing suspicion bar fades out proportionally
+## (1.0 alpha at the threshold, down to 0.0 at zero). Above it, a
+## decreasing bar stays fully opaque — only the final stretch of the
+## drain visibly fades.
+const SUSPICION_FADE_THRESHOLD := 0.2
+
 var _player: Node2D = null
 var _inventory_items: Array[StringName] = []
 var _toast_tween: Tween = null
+var _suspicion_tween: Tween = null
+var _last_suspicion_value: float = 0.0
 
 
 func _ready() -> void:
@@ -45,8 +53,41 @@ func _process(_delta: float) -> void:
 
 func _on_suspicion_changed(value: float) -> void:
 	suspicion_bar.value = value * 100.0
-	suspicion_label.visible = value > 0.0
-	suspicion_bar.visible = value > 0.0
+
+	# SuspicionManager already emits a smoothly interpolated value every
+	# frame while draining, so tracking alpha directly to it while
+	# decreasing is already smooth on its own — a tween here would fight
+	# a constantly-moving target. Rising still gets a deliberate tween so
+	# the bar snaps to full attention quickly rather than fading in at
+	# the same slow pace suspicion itself ramps up.
+	if value <= 0.0:
+		_set_suspicion_alpha(0.0)
+	elif value > _last_suspicion_value:
+		_fade_suspicion_bar_in()
+	elif value > SUSPICION_FADE_THRESHOLD:
+		_set_suspicion_alpha(1.0)
+	else:
+		_set_suspicion_alpha(value / SUSPICION_FADE_THRESHOLD)
+
+	_last_suspicion_value = value
+
+
+func _set_suspicion_alpha(alpha: float) -> void:
+	if _suspicion_tween:
+		_suspicion_tween.kill()
+		_suspicion_tween = null
+	suspicion_bar.modulate.a = alpha
+
+
+func _fade_suspicion_bar_in() -> void:
+	if is_equal_approx(suspicion_bar.modulate.a, 1.0):
+		return
+
+	if _suspicion_tween:
+		_suspicion_tween.kill()
+
+	_suspicion_tween = create_tween()
+	_suspicion_tween.tween_property(suspicion_bar, "modulate:a", 1.0, SUSPICION_FADE_DURATION)
 
 
 func _on_power_up_activated(item_id: StringName, _duration: float) -> void:
