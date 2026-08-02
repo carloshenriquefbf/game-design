@@ -11,13 +11,13 @@ class_name ExitDoor
 ## door's own lock state so future objective types that never touch a
 ## door still gate the exit.
 
-const LOCKED_COLOR := Color(0.5, 0.35, 0.1, 1.0)
-const UNLOCKED_COLOR := Color(0.8, 0.7, 0.25, 1.0)
+const CLOSED_TEXTURE := preload("res://sprites/assets/door/door-closed.png")
+const OPEN_TEXTURE := preload("res://sprites/assets/door/door-open.png")
 
 @export var open_label: String = "[som: abrir porta]"
 
 @onready var vision_blocker_shape: CollisionShape2D = $VisionBlocker/CollisionShape2D
-@onready var door_visual: ColorRect = $ColorRect
+@onready var door_sprite: Sprite2D = $Sprite2D
 
 var _locked: bool = false
 
@@ -51,7 +51,7 @@ func _objectives_complete() -> bool:
 
 
 func _update_visual() -> void:
-	door_visual.color = LOCKED_COLOR if _locked else UNLOCKED_COLOR
+	door_sprite.texture = CLOSED_TEXTURE if _locked else OPEN_TEXTURE
 
 
 func _play_open_placeholder() -> void:

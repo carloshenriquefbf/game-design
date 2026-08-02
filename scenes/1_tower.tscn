@@ -5,21 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://dwu0flcm2xkqa" path="res://scenes/player.tscn" id="4_33s7m"]
 [ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
 [ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="5_wall"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="6_hud"]
-[ext_resource type="PackedScene" path="res://scenes/invisibility_potion.tscn" id="7_potion"]
-[ext_resource type="PackedScene" path="res://scenes/wind_bag.tscn" id="8_windbag"]
-[ext_resource type="PackedScene" path="res://scenes/candle.tscn" id="9_candle"]
-[ext_resource type="PackedScene" path="res://scenes/key.tscn" id="11_key"]
-[ext_resource type="Script" path="res://scripts/level_objectives.gd" id="12_level_objectives"]
-[ext_resource type="Script" path="res://scripts/key_door_objective.gd" id="13_key_door_objective"]
+[ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" uid="uid://bvmqkwb2yqui5" path="res://scenes/invisibility_potion.tscn" id="7_potion"]
+[ext_resource type="PackedScene" uid="uid://bwtfx0ovr7ajw" path="res://scenes/wind_bag.tscn" id="8_windbag"]
+[ext_resource type="PackedScene" uid="uid://cus75iqwnp8ig" path="res://scenes/key.tscn" id="11_key"]
+[ext_resource type="Script" uid="uid://b8hld3a44vu2x" path="res://scripts/level_objectives.gd" id="12_level_objectives"]
+[ext_resource type="Script" uid="uid://vfjuju3urg2a" path="res://scripts/key_door_objective.gd" id="13_key_door_objective"]
+[ext_resource type="PackedScene" uid="uid://ca0ok7d4hwete" path="res://scenes/torch1.tscn" id="14_torch1"]
+[ext_resource type="Script" uid="uid://ce47gmhaseoov" path="res://scripts/objective.gd" id="15_2a2cg"]
+[ext_resource type="PackedScene" path="res://scenes/torch2.tscn" id="15_torch2"]
+[ext_resource type="PackedScene" path="res://scenes/candle1.tscn" id="16_candle1"]
+[ext_resource type="PackedScene" path="res://scenes/candle2.tscn" id="17_candle2"]
 
 [sub_resource type="Resource" id="Resource_tower_key_door"]
 resource_local_to_scene = true
 script = ExtResource("13_key_door_objective")
+door_path = NodePath("../ExitDoor")
 id = &"tower_key_door"
 label = "Find the key and open the locked exit door"
-key_item_id = &"key"
-door_path = NodePath("../ExitDoor")
 
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("4_fw5wf")]
 
@@ -78,15 +81,47 @@ position = Vector2(604, 360)
 [node name="WindBag" parent="." index="10" unique_id=1039679693 instance=ExtResource("8_windbag")]
 position = Vector2(778, 630)
 
-[node name="Candle1" parent="." index="11" unique_id=2045788353 instance=ExtResource("9_candle")]
-position = Vector2(107, 108)
-
-[node name="Candle2" parent="." index="12" unique_id=730831515 instance=ExtResource("9_candle")]
-position = Vector2(1244, 108)
-
-[node name="Key" parent="." instance=ExtResource("11_key")]
+[node name="Key" parent="." index="11" unique_id=956618669 instance=ExtResource("11_key")]
 position = Vector2(604, 281)
 
-[node name="LevelObjectives" type="Node" parent="."]
+[node name="TorchTopLeft" parent="." index="12" unique_id=824330000 instance=ExtResource("15_torch2")]
+position = Vector2(340, 50)
+
+[node name="TorchTopRight" parent="." index="13" unique_id=1627182318 instance=ExtResource("15_torch2")]
+position = Vector2(940, 50)
+
+[node name="TorchBottomLeft" parent="." index="14" unique_id=1664472371 instance=ExtResource("15_torch2")]
+position = Vector2(340, 670)
+
+[node name="TorchBottomRight" parent="." index="15" unique_id=407458271 instance=ExtResource("15_torch2")]
+position = Vector2(940, 670)
+
+[node name="TorchWall1West" parent="." index="16" unique_id=510935486 instance=ExtResource("14_torch1")]
+position = Vector2(200, 368)
+flip_h = true
+
+[node name="TorchWall1East" parent="." index="17" unique_id=1562995618 instance=ExtResource("14_torch1")]
+position = Vector2(240, 368)
+
+[node name="TorchWall2West" parent="." index="18" unique_id=151347951 instance=ExtResource("14_torch1")]
+position = Vector2(1000, 368)
+flip_h = true
+
+[node name="TorchWall2East" parent="." index="19" unique_id=499629886 instance=ExtResource("14_torch1")]
+position = Vector2(1040, 368)
+
+[node name="CandleNW" parent="." index="20" unique_id=1151574542 instance=ExtResource("16_candle1")]
+position = Vector2(300, 200)
+
+[node name="CandleNE" parent="." index="21" unique_id=1735905831 instance=ExtResource("17_candle2")]
+position = Vector2(900, 200)
+
+[node name="CandleSW" parent="." index="22" unique_id=1167858367 instance=ExtResource("16_candle1")]
+position = Vector2(300, 500)
+
+[node name="CandleSE" parent="." index="23" unique_id=1631686690 instance=ExtResource("17_candle2")]
+position = Vector2(900, 500)
+
+[node name="LevelObjectives" type="Node" parent="." index="24" unique_id=515851744]
 script = ExtResource("12_level_objectives")
-objectives = Array[Objective]([SubResource("Resource_tower_key_door")])
+objectives = Array[ExtResource("15_2a2cg")]([SubResource("Resource_tower_key_door")])

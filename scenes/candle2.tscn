@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/base_illumination_asset.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://myn7463kh8tk" path="res://sprites/assets/candle2/candlestick_2_1.png" id="2_frame1"]
+[ext_resource type="Texture2D" uid="uid://brq6dgmfg8dvm" path="res://sprites/assets/candle2/candlestick_2_2.png" id="3_frame2"]
+[ext_resource type="Texture2D" uid="uid://d4dv38mvx3br3" path="res://sprites/assets/candle2/candlestick_2_3.png" id="4_frame3"]
+[ext_resource type="Texture2D" uid="uid://cbuflkxgg5oyo" path="res://sprites/assets/candle2/candlestick_2_4.png" id="5_frame4"]
+[ext_resource type="Texture2D" uid="uid://bvyuen5keo5q8" path="res://sprites/assets/candle2/blown_candlestick2.png" id="6_blown"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_candle2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_frame1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_frame2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_frame3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_frame4")
+}],
+"loop": true,
+"name": &"lit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_blown")
+}],
+"loop": false,
+"name": &"blown",
+"speed": 5.0
+}]
+
+[node name="Candle2" instance=ExtResource("1_base")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_candle2")

@@ -97,8 +97,8 @@ func _use_wind_bag() -> void:
 
 	_play_wind_bag_placeholder()
 
-	for candle in get_tree().get_nodes_in_group("candle"):
-		candle.extinguish()
+	for illumination_asset in get_tree().get_nodes_in_group("illumination"):
+		illumination_asset.extinguish()
 
 
 func _play_wind_bag_placeholder() -> void:

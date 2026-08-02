@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/candle.gd" id="1_candle"]
 
-[node name="Candle" type="Node2D" groups=["candle"]]
+[node name="Candle" type="Node2D" groups=["illumination"]]
 script = ExtResource("1_candle")
 
 [node name="Flame" type="ColorRect" parent="."]

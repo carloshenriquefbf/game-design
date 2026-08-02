@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btaryeskvx3vq"]
 
 [ext_resource type="Script" uid="uid://c5pvgi1yr7swr" path="res://scripts/exit_door.gd" id="1_syxuu"]
+[ext_resource type="Texture2D" uid="uid://duf3g2wx2my57" path="res://sprites/assets/door/door-open.png" id="2_open"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
 size = Vector2(64, 64)
@@ -15,10 +16,10 @@ position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4ahnf")
 debug_color = Color(0.9661407, 0, 0.48533386, 0.41960785)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 64.0
-offset_bottom = 64.0
-color = Color(0.8, 0.7, 0.25, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("2_open")
 
 [node name="VisionBlocker" type="StaticBody2D" parent="."]
 collision_layer = 16

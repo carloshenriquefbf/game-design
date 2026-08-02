@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/base_illumination_asset.gd" id="1_base_illum"]
+
+[node name="BaseIlluminationAsset" type="Node2D" groups=["illumination"]]
+script = ExtResource("1_base_illum")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "lit"
