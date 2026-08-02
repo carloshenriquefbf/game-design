@@ -14,40 +14,35 @@ size = Vector2(20, 730)
 [node name="BaseMap" type="Node2D" unique_id=367366722]
 
 [node name="Background" type="TextureRect" parent="." unique_id=841275155]
-offset_right = 1280.0
-offset_bottom = 720.0
+position = Vector2(0, 0)
+size = Vector2(1280, 720)
 texture = ExtResource("1_floor")
 stretch_mode = 1
 
 [node name="LeftBorderWall" type="TextureRect" parent="."]
-offset_left = -10.0
-offset_top = -5.0
-offset_right = 10.0
-offset_bottom = 725.0
+position = Vector2(-10, -5)
+size = Vector2(20, 730)
+z_index = 1
 texture = ExtResource("4_sidewall")
 stretch_mode = 1
 
 [node name="RightBorderWall" type="TextureRect" parent="."]
-offset_left = 1270.0
-offset_top = -5.0
-offset_right = 1290.0
-offset_bottom = 725.0
+position = Vector2(1270, -5)
+size = Vector2(20, 730)
+z_index = 1
 texture = ExtResource("4_sidewall")
 stretch_mode = 1
 
 [node name="TopBorderWall" type="TextureRect" parent="."]
-offset_left = 0.0
-offset_top = -10.0
-offset_right = 1280.0
-offset_bottom = 10.0
+position = Vector2(0, -10)
+size = Vector2(1280, 20)
 texture = ExtResource("2_interior")
 stretch_mode = 1
 
 [node name="BottomBorderWall" type="TextureRect" parent="."]
-offset_left = 0.0
-offset_top = 710.0
-offset_right = 1280.0
-offset_bottom = 730.0
+position = Vector2(0, 710)
+size = Vector2(1280, 20)
+z_index = 2
 texture = ExtResource("3_exterior")
 stretch_mode = 1
 

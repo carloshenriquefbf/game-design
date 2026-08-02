@@ -18,6 +18,7 @@ const OPEN_TEXTURE := preload("res://sprites/assets/door/door-open.png")
 
 @onready var vision_blocker_shape: CollisionShape2D = $VisionBlocker/CollisionShape2D
 @onready var door_sprite: Sprite2D = $Sprite2D
+@onready var next_stage_void: ColorRect = $NextStageVoid
 
 var _locked: bool = false
 
@@ -52,6 +53,7 @@ func _objectives_complete() -> bool:
 
 func _update_visual() -> void:
 	door_sprite.texture = CLOSED_TEXTURE if _locked else OPEN_TEXTURE
+	next_stage_void.visible = not _locked
 
 
 func _play_open_placeholder() -> void:

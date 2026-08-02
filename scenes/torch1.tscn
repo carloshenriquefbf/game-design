@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c4rv0hr4t3p2k" path="res://sprites/assets/torch1/side_torch_2.png" id="3_frame2"]
 [ext_resource type="Texture2D" uid="uid://byhvkh0sn3vap" path="res://sprites/assets/torch1/side_torch_3.png" id="4_frame3"]
 [ext_resource type="Texture2D" uid="uid://ct65vqh1butya" path="res://sprites/assets/torch1/side_torch_4.png" id="5_frame4"]
-[ext_resource type="Texture2D" uid="uid://b4y1ropwhhqk" path="res://sprites/assets/torch1/blown_side_torch.png" id="6_blown"]
+[ext_resource type="Texture2D" uid="uid://b0dpqyt6f7bjv" path="res://sprites/assets/torch1/blown_side_torch_1.png" id="6_blown"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_torch1"]
 animations = [{
@@ -38,7 +38,6 @@ animations = [{
 [node name="Torch1" unique_id=98278672 instance=ExtResource("1_base")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_torch1")
 animation = &"lit"
 frame_progress = 0.44482115

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://btaryeskvx3vq"]
 
 [ext_resource type="Script" uid="uid://c5pvgi1yr7swr" path="res://scripts/exit_door.gd" id="1_syxuu"]
-[ext_resource type="Texture2D" uid="uid://duf3g2wx2my57" path="res://sprites/assets/door/door-open.png" id="2_open"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
-size = Vector2(64, 64)
+size = Vector2(128, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_syxuu"]
+load_path = "res://.godot/imported/door-open.png-ae5f79d9152e9ecef0fc2a93c0e70633.ctex"
 
 [node name="ExitDoor" type="Node2D" unique_id=2060408876]
 script = ExtResource("1_syxuu")
@@ -16,10 +18,16 @@ position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4ahnf")
 debug_color = Color(0.9661407, 0, 0.48533386, 0.41960785)
 
+[node name="NextStageVoid" type="ColorRect" parent="." unique_id=-1378539995]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=709013958]
 position = Vector2(32, 32)
-scale = Vector2(2, 2)
-texture = ExtResource("2_open")
+texture = SubResource("CompressedTexture2D_syxuu")
 
 [node name="VisionBlocker" type="StaticBody2D" parent="." unique_id=236151572]
 collision_layer = 16

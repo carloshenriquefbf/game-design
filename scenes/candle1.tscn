@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://611j2al3xvb4" path="res://sprites/assets/candle1/candlestick_1_4.png" id="5_frame4"]
 [ext_resource type="Texture2D" uid="uid://dyiveblywac1y" path="res://sprites/assets/candle1/blown_candlestick1.png" id="6_blown"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_candle1"]
+size = Vector2(16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_candle1"]
 animations = [{
 "frames": [{
@@ -38,5 +41,11 @@ animations = [{
 [node name="Candle1" instance=ExtResource("1_base")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_candle1")
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_candle1")

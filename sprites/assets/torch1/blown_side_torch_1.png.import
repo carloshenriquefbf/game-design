@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4y1ropwhhqk"
-path="res://.godot/imported/blown_side_torch.png-ebf9002d2aba8089064c8e23949a9a58.ctex"
+uid="uid://b0dpqyt6f7bjv"
+path="res://.godot/imported/blown_side_torch_1.png-c2f8752e49acd18cda2b5990b6b15f97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/assets/torch1/blown_side_torch.png"
-dest_files=["res://.godot/imported/blown_side_torch.png-ebf9002d2aba8089064c8e23949a9a58.ctex"]
+source_file="res://sprites/assets/torch1/blown_side_torch_1.png"
+dest_files=["res://.godot/imported/blown_side_torch_1.png-c2f8752e49acd18cda2b5990b6b15f97.ctex"]
 
 [params]
 
