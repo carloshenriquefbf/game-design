@@ -1,10 +1,42 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://cus75iqwnp8ig"]
 
 [ext_resource type="PackedScene" path="res://scenes/base_item.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://b5pujecuonvbg" path="res://sprites/itens/key/keys_1_1.png" id="2_jcln5"]
+[ext_resource type="Texture2D" uid="uid://c2ebo785fpf6" path="res://sprites/itens/key/keys_1_2.png" id="3_b4qnb"]
+[ext_resource type="Texture2D" uid="uid://ds8raeia2ub55" path="res://sprites/itens/key/keys_1_3.png" id="4_6t41w"]
+[ext_resource type="Texture2D" uid="uid://dkk72hvcnkq0n" path="res://sprites/itens/key/keys_1_4.png" id="5_ljj5h"]
 
-[node name="Key" instance=ExtResource("1_base")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ahnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jcln5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b4qnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6t41w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ljj5h")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Key" unique_id=1240235012 instance=ExtResource("1_base")]
 item_id = &"key"
 pickup_label = "[som: pegar chave]"
+pickup_message = "Key has been picked up!"
 
-[node name="ColorRect" parent="."]
-color = Color(0.95, 0.85, 0.2, 1)
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.9490196, 0.8509804, 0.2, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=48275707]
+position = Vector2(-1, -0.9999999)
+scale = Vector2(2.125, 1.7187501)
+sprite_frames = SubResource("SpriteFrames_4ahnf")
+autoplay = "default"
+frame_progress = 0.66118896

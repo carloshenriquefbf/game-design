@@ -42,12 +42,12 @@ func _physics_process(_delta: float) -> void:
 		_use_wind_bag()
 
 
-func add_item(item_id: StringName) -> bool:
+func add_item(item_id: StringName, pickup_message: String = "", instructions: String = "") -> bool:
 	if _inventory.size() >= MAX_INVENTORY_SIZE:
 		return false
 
 	_inventory.append(item_id)
-	EventBus.item_picked_up.emit(item_id)
+	EventBus.item_picked_up.emit(item_id, pickup_message, instructions)
 	return true
 
 
@@ -57,6 +57,7 @@ func _consume_item(item_id: StringName) -> bool:
 		return false
 
 	_inventory.remove_at(index)
+	EventBus.item_consumed.emit(item_id)
 	return true
 
 

@@ -1,16 +1,20 @@
 extends CharacterBody2D
 
 
-enum State { IDLE, PATROL, ALERT }
+enum State { IDLE, PATROL, ALERT, LOOK_AROUND }
 
 const ARRIVAL_DISTANCE := 4.0
 const CONE_SEGMENTS := 12
+const LOOK_AROUND_ANGLE_HARD_CEILING_DEGREES := 80.0
 
 @export var speed: float = 100.0
 @export var vision_range: float = 220.0
 @export var vision_angle_degrees: float = 70.0
 @export var patrol_loop: bool = false
 @export var dimmed_vision_multiplier: float = 0.75
+@export var look_around_sweep_angle_degrees: float = 45.0
+@export var look_around_sweep_duration: float = 2.0
+@export var look_around_idle_interval: float = 4.0
 
 @onready var animated_sprite: AnimatedSprite2D = $Sprite
 @onready var patrol_route: Node2D = get_node_or_null("PatrolRoute")
@@ -33,6 +37,11 @@ var _dimmed: bool = false
 var _base_vision_range: float
 var _base_vision_angle_degrees: float
 var _base_cone_color: Color
+
+var _state_before_look_around: State = State.IDLE
+var _look_around_tween: Tween = null
+var _look_around_base_angle: float = 0.0
+var _idle_look_around_timer: float = 0.0
 
 
 func _ready() -> void:

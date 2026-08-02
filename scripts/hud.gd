@@ -2,42 +2,45 @@ extends CanvasLayer
 
 @onready var suspicion_label: Label = $Root/TopLeft/SuspicionLabel
 @onready var suspicion_bar: TextureProgressBar = $Root/TopLeft/SuspicionBar
-@onready var power_up_icon: TextureRect = $Root/BottomLeft/PowerUpSlot/PowerUpIcon
-@onready var power_up_timer_label: Label = $Root/BottomLeft/PowerUpSlot/PowerUpTimerLabel
-@onready var inventory_icon: TextureRect = $Root/BottomLeft/InventorySlot/InventoryIcon
-@onready var objective_title: Label = $Root/TopRight/ObjectiveTitle
-@onready var objective_list: VBoxContainer = $Root/TopRight/ObjectiveList
+@onready var potion_active_fill: ColorRect = $Root/BottomLeft/PotionSlot/ActiveFill
+@onready var potion_icon: TextureRect = $Root/BottomLeft/PotionSlot/Icon
+@onready var potion_timer_label: Label = $Root/BottomLeft/PotionSlot/TimerLabel
+@onready var wind_bag_icon: TextureRect = $Root/BottomLeft/WindBagSlot/Icon
+@onready var key_icon: TextureRect = $Root/BottomLeft/KeySlot/Icon
+@onready var pickup_toast: Label = $Root/PickupToast
 
-var _level_objectives: LevelObjectives = null
+const SLOT_HEIGHT := 48.0
 
-var _power_up_icon_texture: Texture2D
 var _player: Node2D = null
+var _inventory_items: Array[StringName] = []
+var _toast_tween: Tween = null
 
 
 func _ready() -> void:
 	SuspicionManager.suspicion_changed.connect(_on_suspicion_changed)
 	_on_suspicion_changed(SuspicionManager.suspicion)
 
-	_power_up_icon_texture = _make_placeholder_icon(Color(0.55, 0.2, 0.85))
-
-	power_up_icon.visible = false
-	power_up_timer_label.visible = false
-	inventory_icon.visible = false
-
-	_level_objectives = get_tree().get_first_node_in_group("level_objectives") as LevelObjectives
-	if _level_objectives:
-		EventBus.objective_completed.connect(_on_objective_completed)
-	_render_objectives()
+	potion_timer_label.visible = false
+	_render_inventory()
 
 	_player = get_tree().get_first_node_in_group("player")
 	EventBus.power_up_activated.connect(_on_power_up_activated)
 	EventBus.power_up_expired.connect(_on_power_up_expired)
+	EventBus.item_picked_up.connect(_on_item_picked_up)
+	EventBus.item_consumed.connect(_on_item_consumed)
 
 
 func _process(_delta: float) -> void:
-	if not power_up_timer_label.visible or _player == null:
+	if not potion_timer_label.visible or _player == null:
 		return
-	power_up_timer_label.text = "%.1fs" % _player.get_invisibility_time_left()
+
+	var time_left: float = _player.get_invisibility_time_left()
+	potion_timer_label.text = "%.1fs" % time_left
+
+	var fraction: float = clampf(time_left / _player.invisibility_duration, 0.0, 1.0)
+	var height := SLOT_HEIGHT * fraction
+	potion_active_fill.position.y = SLOT_HEIGHT - height
+	potion_active_fill.size.y = height
 
 
 func _on_suspicion_changed(value: float) -> void:
@@ -49,51 +52,52 @@ func _on_suspicion_changed(value: float) -> void:
 func _on_power_up_activated(item_id: StringName, _duration: float) -> void:
 	if item_id != &"invisibility_potion":
 		return
-	set_active_power_up(_power_up_icon_texture)
-	power_up_timer_label.visible = true
+	potion_active_fill.visible = true
+	potion_active_fill.size.y = SLOT_HEIGHT
+	potion_active_fill.position.y = 0.0
+	potion_timer_label.visible = true
 
 
 func _on_power_up_expired(item_id: StringName) -> void:
 	if item_id != &"invisibility_potion":
 		return
-	clear_power_up()
-	power_up_timer_label.visible = false
+	potion_active_fill.visible = false
+	potion_timer_label.visible = false
 
 
-func _make_placeholder_icon(color: Color) -> ImageTexture:
-	var image := Image.create(16, 16, false, Image.FORMAT_RGBA8)
-	image.fill(color)
-	return ImageTexture.create_from_image(image)
+func _on_item_picked_up(item_id: StringName, pickup_message: String, instructions: String) -> void:
+	_inventory_items.append(item_id)
+	_render_inventory()
+
+	var text := pickup_message
+	if instructions != "" and GameManager.should_show_item_instructions(item_id):
+		text = "%s %s" % [text, instructions] if text != "" else instructions
+
+	if text != "":
+		_show_pickup_toast(text)
 
 
-func set_active_power_up(icon: Texture2D) -> void:
-	power_up_icon.texture = icon
-	power_up_icon.visible = icon != null
+func _on_item_consumed(item_id: StringName) -> void:
+	var index := _inventory_items.find(item_id)
+	if index != -1:
+		_inventory_items.remove_at(index)
+	_render_inventory()
 
 
-func clear_power_up() -> void:
-	set_active_power_up(null)
+func _render_inventory() -> void:
+	potion_icon.visible = _inventory_items.has(&"invisibility_potion")
+	wind_bag_icon.visible = _inventory_items.has(&"wind_bag")
+	key_icon.visible = _inventory_items.has(&"key")
 
 
-func set_has_key(has_key: bool) -> void:
-	inventory_icon.visible = has_key
+func _show_pickup_toast(text: String) -> void:
+	if _toast_tween:
+		_toast_tween.kill()
 
+	pickup_toast.text = text
+	pickup_toast.modulate.a = 0.0
 
-func _on_objective_completed(_objective_id: StringName) -> void:
-	_render_objectives()
-
-
-func _render_objectives() -> void:
-	for child in objective_list.get_children():
-		child.queue_free()
-
-	if _level_objectives == null:
-		objective_title.text = "Objectives"
-		return
-
-	for objective in _level_objectives.objectives:
-		var label := Label.new()
-		label.text = ("[x] " if objective.is_complete else "[ ] ") + objective.label
-		objective_list.add_child(label)
-
-	objective_title.text = "Objectives (%d/%d)" % [_level_objectives.completed_count, _level_objectives.total()]
+	_toast_tween = create_tween()
+	_toast_tween.tween_property(pickup_toast, "modulate:a", 1.0, 0.3)
+	_toast_tween.tween_interval(1.5)
+	_toast_tween.tween_property(pickup_toast, "modulate:a", 0.0, 0.5)

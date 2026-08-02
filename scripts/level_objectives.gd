@@ -27,7 +27,7 @@ func _setup_key_door_objective(objective: KeyDoorObjective) -> void:
 	if door:
 		door.set_locked(true)
 
-	EventBus.item_picked_up.connect(func(item_id: StringName) -> void:
+	EventBus.item_picked_up.connect(func(item_id: StringName, _pickup_message: String, _instructions: String) -> void:
 		_on_key_picked_up(objective, door, item_id)
 	)
 

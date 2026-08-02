@@ -1,10 +1,43 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bwtfx0ovr7ajw"]
 
 [ext_resource type="PackedScene" path="res://scenes/base_item.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://bc171w2wbg65k" path="res://sprites/itens/wind_bag/box_2_1.png" id="2_yqhem"]
+[ext_resource type="Texture2D" uid="uid://43uj6bjmdbjj" path="res://sprites/itens/wind_bag/box_2_2.png" id="3_qjurf"]
+[ext_resource type="Texture2D" uid="uid://ckw0rg8gbtmgv" path="res://sprites/itens/wind_bag/box_2_3.png" id="4_i3rin"]
+[ext_resource type="Texture2D" uid="uid://bohp7oyg67mvu" path="res://sprites/itens/wind_bag/box_2_4.png" id="5_o1gln"]
 
-[node name="WindBag" instance=ExtResource("1_base")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ahnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yqhem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qjurf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i3rin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o1gln")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WindBag" unique_id=2130989893 instance=ExtResource("1_base")]
 item_id = &"wind_bag"
 pickup_label = "[som: pegar bolsa de vento]"
+pickup_message = "Wind bag has been picked up!"
+instructions = "Press E to activate it"
 
-[node name="ColorRect" parent="."]
-color = Color(0.15, 0.7, 0.65, 1)
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.14901961, 0.69803923, 0.6509804, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=185030150]
+position = Vector2(0, 0.99999994)
+scale = Vector2(1.9687499, 1.875)
+sprite_frames = SubResource("SpriteFrames_4ahnf")
+autoplay = "default"
+frame_progress = 0.5756103

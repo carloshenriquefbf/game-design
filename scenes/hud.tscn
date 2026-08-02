@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://5thxdryovq8q" path="res://scripts/hud.gd" id="1_hud"]
 [ext_resource type="Texture2D" uid="uid://puqhhbhqapwf" path="res://sprites/ui/BigBar_Base.png" id="2_5ysmq"]
 [ext_resource type="Texture2D" uid="uid://vbgcuy022d0v" path="res://sprites/ui/BigBar_Fill.png" id="3_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://cljep3okdmmmo" path="res://sprites/itens/potion/flasks_3_1.png" id="4_potion"]
+[ext_resource type="Texture2D" uid="uid://bc171w2wbg65k" path="res://sprites/itens/wind_bag/box_2_1.png" id="5_windbag"]
+[ext_resource type="Texture2D" uid="uid://b5pujecuonvbg" path="res://sprites/itens/key/keys_1_1.png" id="6_key"]
 
 [node name="HUD" type="CanvasLayer" unique_id=419124752]
 script = ExtResource("1_hud")
@@ -35,38 +38,6 @@ value = 0.0
 texture_under = ExtResource("2_5ysmq")
 texture_progress = ExtResource("3_6fi6k")
 
-[node name="TopRight" type="VBoxContainer" parent="Root" unique_id=1054445794]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -220.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 96.0
-grow_horizontal = 0
-
-[node name="ObjectiveTitle" type="Label" parent="Root/TopRight" unique_id=416797933]
-layout_mode = 2
-text = "Objectives"
-horizontal_alignment = 2
-
-[node name="ObjectiveList" type="VBoxContainer" parent="Root/TopRight" unique_id=1729352305]
-layout_mode = 2
-
-[node name="ControlsHint" type="Label" parent="Root" unique_id=694516871]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -104.0
-offset_right = 260.0
-offset_bottom = -68.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 14
-text = "Q: Drink Potion    E: Wind Bag"
-
 [node name="BottomLeft" type="HBoxContainer" parent="Root" unique_id=2039821320]
 layout_mode = 1
 anchors_preset = 2
@@ -74,28 +45,51 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = -64.0
-offset_right = 132.0
+offset_right = 176.0
 offset_bottom = -16.0
 grow_vertical = 0
 theme_override_constants/separation = 8
 
-[node name="PowerUpSlot" type="ColorRect" parent="Root/BottomLeft" unique_id=282940826]
+[node name="PotionSlot" type="ColorRect" parent="Root/BottomLeft" unique_id=282940826]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 color = Color(0.15, 0.15, 0.18, 0.85)
 
-[node name="PowerUpIcon" type="TextureRect" parent="Root/BottomLeft/PowerUpSlot" unique_id=1868919379]
+[node name="ActiveFill" type="ColorRect" parent="Root/BottomLeft/PotionSlot"]
+visible = false
+layout_mode = 0
+position = Vector2(0, 48)
+size = Vector2(48, 0)
+color = Color(0.55, 0.2, 0.85, 0.65)
+
+[node name="HintLabel" type="Label" parent="Root/BottomLeft/PotionSlot"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 15
+text = "Q"
+
+[node name="Icon" type="TextureRect" parent="Root/BottomLeft/PotionSlot" unique_id=1868919379]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_potion")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PowerUpTimerLabel" type="Label" parent="Root/BottomLeft/PowerUpSlot" unique_id=1216218150]
+[node name="TimerLabel" type="Label" parent="Root/BottomLeft/PotionSlot" unique_id=1216218150]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -110,18 +104,76 @@ grow_vertical = 0
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="InventorySlot" type="ColorRect" parent="Root/BottomLeft" unique_id=400201918]
+[node name="WindBagSlot" type="ColorRect" parent="Root/BottomLeft" unique_id=400201918]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 color = Color(0.15, 0.15, 0.18, 0.85)
 
-[node name="InventoryIcon" type="TextureRect" parent="Root/BottomLeft/InventorySlot" unique_id=528379643]
+[node name="HintLabel" type="Label" parent="Root/BottomLeft/WindBagSlot"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 15
+text = "E"
+
+[node name="Icon" type="TextureRect" parent="Root/BottomLeft/WindBagSlot" unique_id=528379643]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_windbag")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="KeySlot" type="ColorRect" parent="Root/BottomLeft"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+color = Color(0.15, 0.15, 0.18, 0.85)
+
+[node name="Icon" type="TextureRect" parent="Root/BottomLeft/KeySlot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_key")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PickupToast" type="Label" parent="Root"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -140.0
+offset_right = 300.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

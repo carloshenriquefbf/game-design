@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	var rate := (1.0 / time_to_max) if seen else (1.0 / time_to_drain)
 	var new_value := move_toward(suspicion, target, rate * delta)
 
-	if not is_equal_approx(new_value, suspicion):
+	if new_value != suspicion:
 		suspicion = new_value
 		suspicion_changed.emit(suspicion)
 
