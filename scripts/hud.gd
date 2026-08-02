@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var suspicion_label: Label = $Root/TopLeft/SuspicionLabel
 @onready var suspicion_bar: TextureProgressBar = $Root/TopLeft/SuspicionBar
 @onready var power_up_icon: TextureRect = $Root/BottomLeft/PowerUpSlot/PowerUpIcon
 @onready var power_up_timer_label: Label = $Root/BottomLeft/PowerUpSlot/PowerUpTimerLabel
@@ -41,6 +42,8 @@ func _process(_delta: float) -> void:
 
 func _on_suspicion_changed(value: float) -> void:
 	suspicion_bar.value = value * 100.0
+	suspicion_label.visible = value > 0.0
+	suspicion_bar.visible = value > 0.0
 
 
 func _on_power_up_activated(item_id: StringName, _duration: float) -> void:

@@ -1,33 +1,33 @@
 [gd_scene format=3 uid="uid://c3ticswavd3e0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
-size = Vector2(1162, 20)
+size = Vector2(1290, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltkc"]
-size = Vector2(20, 650)
+size = Vector2(20, 730)
 
 [node name="BaseMap" type="Node2D" unique_id=367366722]
 
 [node name="Background" type="ColorRect" parent="." unique_id=841275155]
-offset_right = 1152.0
-offset_bottom = 640.0
+offset_right = 1280.0
+offset_bottom = 720.0
 color = Color(0.37254903, 1, 0.2509804, 0.2627451)
 
 [node name="MapBorder" type="StaticBody2D" parent="." unique_id=1747597444]
 collision_layer = 17
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MapBorder" unique_id=1853873944]
-position = Vector2(576, 640)
+position = Vector2(640, 720)
 shape = SubResource("RectangleShape2D_4ahnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBorder" unique_id=1029666786]
-position = Vector2(571, 0)
+position = Vector2(640, 0)
 shape = SubResource("RectangleShape2D_4ahnf")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="MapBorder" unique_id=1826427463]
-position = Vector2(0, 315)
+position = Vector2(0, 360)
 shape = SubResource("RectangleShape2D_6ltkc")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="MapBorder" unique_id=855920065]
-position = Vector2(1152, 320)
+position = Vector2(1280, 360)
 shape = SubResource("RectangleShape2D_6ltkc")
