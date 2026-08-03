@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://vfjuju3urg2a" path="res://scripts/key_door_objective.gd" id="19_as1wi"]
 [ext_resource type="PackedScene" uid="uid://o6qc26hxgrc8" path="res://scenes/base_wall2.tscn" id="19_xgyxy"]
 [ext_resource type="PackedScene" uid="uid://2l3hnlhgekwg" path="res://scenes/cauldron1.tscn" id="20_4lj2k"]
+[ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="21_hud"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
 
 [sub_resource type="Resource" id="Resource_tower_key_door"]
 resource_local_to_scene = true
@@ -37,11 +39,11 @@ texture = ExtResource("2_g1o2m")
 
 [node name="TorchWall2East" parent="Background" index="0" unique_id=98278672 instance=ExtResource("14_dvl0j")]
 z_index = 1
-position = Vector2(1144, 360)
+position = Vector2(1144, 384)
 
 [node name="TorchWall2West" parent="Background" index="1" unique_id=1426419450 instance=ExtResource("14_dvl0j")]
 z_index = 1
-position = Vector2(128, 384)
+position = Vector2(136, 392)
 flip_h = true
 
 [node name="LeftBorderWall" parent="." index="1"]
@@ -65,10 +67,16 @@ offset_bottom = 10.0
 texture = ExtResource("4_o4ei5")
 
 [node name="BottomBorderWall" parent="." index="4"]
-offset_top = 710.0
+offset_top = 656.0
 offset_right = 1280.0
-offset_bottom = 730.0
+offset_bottom = 724.0
 texture = ExtResource("5_j6krr")
+
+[node name="CollisionShape2D2" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="0" unique_id=1853873944]
+position = Vector2(640, 688)
+
+[node name="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="1" unique_id=1029666786]
+position = Vector2(640, 24)
 
 [node name="YSort" type="Node2D" parent="." index="6" unique_id=1810993061]
 y_sort_enabled = true
@@ -141,7 +149,7 @@ position = Vector2(832, 32)
 
 [node name="TorchWall2West" parent="YSort" index="11" unique_id=1678469476 instance=ExtResource("14_dvl0j")]
 z_index = 1
-position = Vector2(896, 384)
+position = Vector2(904, 384)
 flip_h = true
 
 [node name="TorchWall2East" parent="YSort" index="12" unique_id=835446657 instance=ExtResource("14_dvl0j")]
@@ -172,3 +180,7 @@ position = Vector2(328, 576)
 
 [node name="BaseIlluminationAsset" parent="." index="11" unique_id=1284805636 instance=ExtResource("20_4lj2k")]
 position = Vector2(640, 384)
+
+[node name="HUD" parent="." index="12" unique_id=68822290 instance=ExtResource("21_hud")]
+
+[node name="PauseMenu" parent="." index="13" unique_id=1041599193 instance=ExtResource("22_pause_menu")]

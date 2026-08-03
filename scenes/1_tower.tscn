@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="4_fw5wf"]
 [ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="5_wall"]
 [ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="6_hud"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="9_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://bvmqkwb2yqui5" path="res://scenes/invisibility_potion.tscn" id="7_potion"]
 [ext_resource type="PackedScene" uid="uid://bwtfx0ovr7ajw" path="res://scenes/wind_bag.tscn" id="8_windbag"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="9_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://cus75iqwnp8ig" path="res://scenes/key.tscn" id="11_key"]
 [ext_resource type="Script" uid="uid://b8hld3a44vu2x" path="res://scripts/level_objectives.gd" id="12_level_objectives"]
 [ext_resource type="Script" uid="uid://vfjuju3urg2a" path="res://scripts/key_door_objective.gd" id="13_key_door_objective"]
@@ -54,15 +54,12 @@ offset_top = 664.0
 offset_right = 1280.0
 offset_bottom = 732.0
 
-[node name="MapBorder" parent="." index="5" unique_id=1747597444]
-visible = false
-
-[node name="CollisionShape2D" parent="MapBorder" index="1" unique_id=1029666786]
+[node name="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="1" unique_id=1029666786]
 position = Vector2(632, 8)
 
 [node name="HUD" parent="." index="6" unique_id=131069233 instance=ExtResource("6_hud")]
 
-[node name="PauseMenu" parent="." index="7" instance=ExtResource("9_pause_menu")]
+[node name="PauseMenu" parent="." index="7" unique_id=1190289685 instance=ExtResource("9_pause_menu")]
 
 [node name="YSort" type="Node2D" parent="." index="8" unique_id=1730204739]
 y_sort_enabled = true
