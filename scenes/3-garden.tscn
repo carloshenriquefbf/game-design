@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b04nhy6krbf1r"]
+
+[ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="1_1vx8f"]
+[ext_resource type="Texture2D" uid="uid://jxg8f13x06ji" path="res://sprites/assets/3-yard/floor.png" id="2_6xyv8"]
+[ext_resource type="Texture2D" uid="uid://n4j0gsbt0eho" path="res://sprites/assets/3-yard/wall-bg.png" id="3_7aayv"]
+[ext_resource type="Texture2D" uid="uid://55iq6lykrci3" path="res://sprites/assets/3-yard/exterior-wall.png" id="4_gx8up"]
+
+[node name="BaseMap" unique_id=367366722 instance=ExtResource("1_1vx8f")]
+
+[node name="Background" parent="." index="0" unique_id=841275155]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_6xyv8")
+
+[node name="LeftBorderWall" parent="." index="1"]
+offset_left = -10.0
+offset_top = -19.0
+offset_right = 54.0
+offset_bottom = 843.0
+texture = ExtResource("3_7aayv")
+
+[node name="RightBorderWall" parent="." index="2"]
+offset_left = 1270.0
+offset_top = -24.0
+offset_right = 1334.0
+offset_bottom = 725.0
+texture = ExtResource("3_7aayv")
+
+[node name="TopBorderWall" parent="." index="3"]
+offset_left = -3.0
+offset_top = -16.0
+offset_right = 1334.0
+offset_bottom = 120.0
+texture = ExtResource("4_gx8up")
+
+[node name="BottomBorderWall" parent="." index="4"]
+offset_left = -14.0
+offset_top = 710.0
+offset_right = 1329.0
+offset_bottom = 846.0
+texture = ExtResource("4_gx8up")

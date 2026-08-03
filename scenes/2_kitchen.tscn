@@ -18,7 +18,8 @@
 [ext_resource type="Script" uid="uid://b8hld3a44vu2x" path="res://scripts/level_objectives.gd" id="17_lxa78"]
 [ext_resource type="Script" uid="uid://ce47gmhaseoov" path="res://scripts/objective.gd" id="18_lku81"]
 [ext_resource type="Script" uid="uid://vfjuju3urg2a" path="res://scripts/key_door_objective.gd" id="19_as1wi"]
-[ext_resource type="PackedScene" uid="uid://o6qc26hxgrc8" path="res://scenes/base_wall2.tscn" id="19_xgyxy"]
+[ext_resource type="PackedScene" path="res://scenes/base_wall.tscn" id="19_xgyxy"]
+[ext_resource type="Texture2D" uid="uid://dmi4uoah0cfj5" path="res://sprites/assets/2_kitchen/side-exterior-wall.png" id="19_boot"]
 [ext_resource type="PackedScene" uid="uid://2l3hnlhgekwg" path="res://scenes/cauldron1.tscn" id="20_4lj2k"]
 [ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="21_hud"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
@@ -168,15 +169,23 @@ objectives = Array[ExtResource("18_lku81")]([SubResource("Resource_tower_key_doo
 
 [node name="Wall1" parent="." index="7" unique_id=738383468 instance=ExtResource("19_xgyxy")]
 position = Vector2(176, 576)
+body_texture = ExtResource("3_noqxp")
+boot_texture = ExtResource("19_boot")
 
 [node name="Wall2" parent="." index="8" unique_id=1481032935 instance=ExtResource("19_xgyxy")]
 position = Vector2(1096, 576)
+body_texture = ExtResource("3_noqxp")
+boot_texture = ExtResource("19_boot")
 
 [node name="Wall3" parent="." index="9" unique_id=2119122931 instance=ExtResource("19_xgyxy")]
 position = Vector2(944, 584)
+body_texture = ExtResource("3_noqxp")
+boot_texture = ExtResource("19_boot")
 
 [node name="Wall4" parent="." index="10" unique_id=1528108417 instance=ExtResource("19_xgyxy")]
 position = Vector2(328, 576)
+body_texture = ExtResource("3_noqxp")
+boot_texture = ExtResource("19_boot")
 
 [node name="BaseIlluminationAsset" parent="." index="11" unique_id=1284805636 instance=ExtResource("20_4lj2k")]
 position = Vector2(640, 384)

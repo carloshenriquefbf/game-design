@@ -15,6 +15,20 @@ extends StaticBody2D
 		if is_node_ready():
 			_apply_size()
 
+## Per-instance override for the Boot/Body textures authored on
+## base_wall.tscn. Leave unset to keep whichever texture the base scene
+## authors on $Boot/$Body.
+@export var body_texture: Texture2D:
+	set(value):
+		body_texture = value
+		if is_node_ready():
+			_apply_textures()
+@export var boot_texture: Texture2D:
+	set(value):
+		boot_texture = value
+		if is_node_ready():
+			_apply_textures()
+
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var boot: TextureRect = $Boot
 @onready var body: TextureRect = $Body
@@ -22,6 +36,14 @@ extends StaticBody2D
 
 func _ready() -> void:
 	_apply_size()
+	_apply_textures()
+
+
+func _apply_textures() -> void:
+	if body_texture != null:
+		body.texture = body_texture
+	if boot_texture != null:
+		boot.texture = boot_texture
 
 
 func _apply_size() -> void:

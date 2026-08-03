@@ -6,7 +6,7 @@ extends Node
 
 const STAGE_SCENES: Array[String] = [
 	"res://scenes/1_tower.tscn", # corridor
-	"res://scenes/1_tower.tscn", # kitchen (placeholder until its scene lands)
+	"res://scenes/2_kitchen.tscn", # kitchen
 	"res://scenes/1_tower.tscn", # garden (placeholder until its scene lands)
 ]
 

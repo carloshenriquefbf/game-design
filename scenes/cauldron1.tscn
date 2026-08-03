@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/base_illumination_asset.tscn" id="1_vft3c"]
 [ext_resource type="Texture2D" uid="uid://3fccync26y55" path="res://sprites/assets/cauldron/cauldron.png" id="2_uelfo"]
-[ext_resource type="Texture2D" path="res://sprites/assets/cauldron/cauldron-off.png" id="3_blown"]
+[ext_resource type="Texture2D" uid="uid://vagoujjmhnpr" path="res://sprites/assets/cauldron/cauldron-off.png" id="3_blown"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n68g4"]
 atlas = ExtResource("2_uelfo")
@@ -56,6 +56,14 @@ region = Rect2(96, 144, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_blown")
+}],
+"loop": 0,
+"name": &"blown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n68g4")
 }, {
 "duration": 1.0,
@@ -94,14 +102,6 @@ animations = [{
 "loop": 1,
 "name": &"lit",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_blown")
-}],
-"loop": false,
-"name": &"blown",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
@@ -113,8 +113,7 @@ size = Vector2(122.5, 100.5)
 position = Vector2(0, -24)
 scale = Vector2(3.1666665, 3.1666667)
 sprite_frames = SubResource("SpriteFrames_uelfo")
-autoplay = "default"
-frame_progress = 0.64601606
+animation = &"blown"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="2" unique_id=180619714]
 
