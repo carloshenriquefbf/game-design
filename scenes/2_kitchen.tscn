@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://d0rn5uauyh4hj"]
+
+[ext_resource type="PackedScene" uid="uid://c3ticswavd3e0" path="res://scenes/base_map.tscn" id="1_p4g6n"]
+[ext_resource type="Texture2D" uid="uid://vs88klol3dgn" path="res://sprites/assets/2_kitchen/floor.png" id="2_g1o2m"]
+[ext_resource type="Texture2D" uid="uid://djxsaf8fcjca5" path="res://sprites/assets/2_kitchen/sidewall.png" id="3_noqxp"]
+[ext_resource type="Texture2D" uid="uid://bvae1ts40yr6h" path="res://sprites/assets/2_kitchen/interior-wall.png" id="4_o4ei5"]
+[ext_resource type="Texture2D" uid="uid://cfps87ge2sope" path="res://sprites/assets/2_kitchen/exterior-wall-export.png" id="5_j6krr"]
+[ext_resource type="PackedScene" uid="uid://btaryeskvx3vq" path="res://scenes/exit_door.tscn" id="6_xgyxy"]
+[ext_resource type="PackedScene" uid="uid://dg8uf4kayof5p" path="res://scenes/knight.tscn" id="7_4lj2k"]
+[ext_resource type="PackedScene" uid="uid://dwu0flcm2xkqa" path="res://scenes/player.tscn" id="8_sc2o0"]
+[ext_resource type="PackedScene" uid="uid://bvmqkwb2yqui5" path="res://scenes/invisibility_potion.tscn" id="10_sy27c"]
+[ext_resource type="PackedScene" uid="uid://bwtfx0ovr7ajw" path="res://scenes/wind_bag.tscn" id="11_bk3on"]
+[ext_resource type="PackedScene" path="res://scenes/torch2.tscn" id="12_h25yc"]
+[ext_resource type="PackedScene" uid="uid://cus75iqwnp8ig" path="res://scenes/key.tscn" id="13_ar2hv"]
+[ext_resource type="PackedScene" uid="uid://ca0ok7d4hwete" path="res://scenes/torch1.tscn" id="14_dvl0j"]
+[ext_resource type="PackedScene" path="res://scenes/candle1.tscn" id="15_8cb3b"]
+[ext_resource type="PackedScene" path="res://scenes/candle2.tscn" id="16_vsy3d"]
+[ext_resource type="Script" uid="uid://b8hld3a44vu2x" path="res://scripts/level_objectives.gd" id="17_lxa78"]
+[ext_resource type="Script" uid="uid://ce47gmhaseoov" path="res://scripts/objective.gd" id="18_lku81"]
+[ext_resource type="Script" uid="uid://vfjuju3urg2a" path="res://scripts/key_door_objective.gd" id="19_as1wi"]
+[ext_resource type="PackedScene" uid="uid://o6qc26hxgrc8" path="res://scenes/base_wall2.tscn" id="19_xgyxy"]
+[ext_resource type="PackedScene" uid="uid://2l3hnlhgekwg" path="res://scenes/cauldron1.tscn" id="20_4lj2k"]
+
+[sub_resource type="Resource" id="Resource_tower_key_door"]
+resource_local_to_scene = true
+script = ExtResource("19_as1wi")
+door_path = NodePath("../ExitDoor")
+id = &"tower_key_door"
+label = "Find the key and open the locked exit door"
+
+[node name="BaseMap" unique_id=367366722 instance=ExtResource("1_p4g6n")]
+
+[node name="Background" parent="." index="0" unique_id=841275155]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_g1o2m")
+
+[node name="TorchWall2East" parent="Background" index="0" unique_id=98278672 instance=ExtResource("14_dvl0j")]
+z_index = 1
+position = Vector2(1144, 360)
+
+[node name="TorchWall2West" parent="Background" index="1" unique_id=1426419450 instance=ExtResource("14_dvl0j")]
+z_index = 1
+position = Vector2(128, 384)
+flip_h = true
+
+[node name="LeftBorderWall" parent="." index="1"]
+offset_left = -10.0
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 725.0
+texture = ExtResource("3_noqxp")
+
+[node name="RightBorderWall" parent="." index="2"]
+offset_left = 1270.0
+offset_top = -5.0
+offset_right = 1290.0
+offset_bottom = 725.0
+texture = ExtResource("3_noqxp")
+
+[node name="TopBorderWall" parent="." index="3"]
+offset_top = -10.0
+offset_right = 1280.0
+offset_bottom = 10.0
+texture = ExtResource("4_o4ei5")
+
+[node name="BottomBorderWall" parent="." index="4"]
+offset_top = 710.0
+offset_right = 1280.0
+offset_bottom = 730.0
+texture = ExtResource("5_j6krr")
+
+[node name="YSort" type="Node2D" parent="." index="6" unique_id=1810993061]
+y_sort_enabled = true
+
+[node name="ExitDoor" parent="YSort" index="0" unique_id=2060408876 instance=ExtResource("6_xgyxy")]
+position = Vector2(608, 0)
+
+[node name="Knight" parent="YSort" index="1" unique_id=675437740 instance=ExtResource("7_4lj2k")]
+position = Vector2(128, 632)
+patrol_loop = true
+
+[node name="PatrolRoute" type="Node2D" parent="YSort/Knight" index="5" unique_id=198597004]
+
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="0" unique_id=2146290079]
+
+[node name="Marker2D2" type="Marker2D" parent="YSort/Knight/PatrolRoute" index="1" unique_id=164031561]
+position = Vector2(816, 16)
+
+[node name="Knight3" parent="YSort" index="2" unique_id=1631653698 instance=ExtResource("7_4lj2k")]
+position = Vector2(256, 256)
+
+[node name="PatrolRoute" type="Node2D" parent="YSort/Knight3" index="5" unique_id=2030948023]
+
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight3/PatrolRoute" index="0" unique_id=785129245]
+position = Vector2(0, 288)
+
+[node name="Knight2" parent="YSort" index="3" unique_id=244263592 instance=ExtResource("7_4lj2k")]
+position = Vector2(1024, 536)
+patrol_loop = true
+
+[node name="PatrolRoute" type="Node2D" parent="YSort/Knight2" index="5" unique_id=1742031246]
+
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight2/PatrolRoute" index="0" unique_id=353800591]
+position = Vector2(0, -272)
+
+[node name="Knight4" parent="YSort" index="4" unique_id=1287500599 instance=ExtResource("7_4lj2k")]
+position = Vector2(840, 176)
+
+[node name="Node2D" type="Node2D" parent="YSort/Knight4" index="5" unique_id=2007499428]
+
+[node name="Marker2D" type="Marker2D" parent="YSort/Knight4/Node2D" index="0" unique_id=104778148]
+position = Vector2(-392, 16)
+
+[node name="Marker2D2" type="Marker2D" parent="YSort/Knight4/Node2D" index="1" unique_id=18022516]
+position = Vector2(-392, 400)
+
+[node name="Marker2D3" type="Marker2D" parent="YSort/Knight4/Node2D" index="2" unique_id=549311054]
+position = Vector2(-8, 400)
+
+[node name="Marker2D4" type="Marker2D" parent="YSort/Knight4/Node2D" index="3" unique_id=4060072]
+position = Vector2(-8, 16)
+
+[node name="Player" parent="YSort" index="5" unique_id=775640936 instance=ExtResource("8_sc2o0")]
+position = Vector2(1072, 80)
+
+[node name="InvisibilityPotion" parent="YSort" index="6" unique_id=611741332 instance=ExtResource("10_sy27c")]
+position = Vector2(640, 496)
+
+[node name="WindBag" parent="YSort" index="7" unique_id=2130989893 instance=ExtResource("11_bk3on")]
+position = Vector2(1024, 368)
+
+[node name="TorchTopLeft" parent="YSort" index="8" unique_id=1159199119 instance=ExtResource("12_h25yc")]
+position = Vector2(448, 32)
+
+[node name="Key" parent="YSort" index="9" unique_id=1240235012 instance=ExtResource("13_ar2hv")]
+position = Vector2(248, 448)
+
+[node name="TorchTopRight" parent="YSort" index="10" unique_id=1929113327 instance=ExtResource("12_h25yc")]
+position = Vector2(832, 32)
+
+[node name="TorchWall2West" parent="YSort" index="11" unique_id=1678469476 instance=ExtResource("14_dvl0j")]
+z_index = 1
+position = Vector2(896, 384)
+flip_h = true
+
+[node name="TorchWall2East" parent="YSort" index="12" unique_id=835446657 instance=ExtResource("14_dvl0j")]
+z_index = 1
+position = Vector2(376, 392)
+
+[node name="CandleNW" parent="YSort" index="13" unique_id=64353718 instance=ExtResource("15_8cb3b")]
+position = Vector2(248, 120)
+
+[node name="CandleSE" parent="YSort" index="14" unique_id=1159394056 instance=ExtResource("16_vsy3d")]
+position = Vector2(1024, 640)
+
+[node name="LevelObjectives" type="Node" parent="YSort" index="15" unique_id=1252755316]
+script = ExtResource("17_lxa78")
+objectives = Array[ExtResource("18_lku81")]([SubResource("Resource_tower_key_door")])
+
+[node name="Wall1" parent="." index="7" unique_id=738383468 instance=ExtResource("19_xgyxy")]
+position = Vector2(176, 576)
+
+[node name="Wall2" parent="." index="8" unique_id=1481032935 instance=ExtResource("19_xgyxy")]
+position = Vector2(1096, 576)
+
+[node name="Wall3" parent="." index="9" unique_id=2119122931 instance=ExtResource("19_xgyxy")]
+position = Vector2(944, 584)
+
+[node name="Wall4" parent="." index="10" unique_id=1528108417 instance=ExtResource("19_xgyxy")]
+position = Vector2(328, 576)
+
+[node name="BaseIlluminationAsset" parent="." index="11" unique_id=1284805636 instance=ExtResource("20_4lj2k")]
+position = Vector2(640, 384)

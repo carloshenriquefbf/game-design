@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://o6qc26hxgrc8"]
+
+[ext_resource type="Script" uid="uid://i8euka0dbjld" path="res://scripts/wall.gd" id="1_wall"]
+[ext_resource type="Texture2D" uid="uid://dmi4uoah0cfj5" path="res://sprites/assets/2_kitchen/side-exterior-wall.png" id="2_78c35"]
+[ext_resource type="Texture2D" uid="uid://djxsaf8fcjca5" path="res://sprites/assets/2_kitchen/sidewall.png" id="3_1nwc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(20, 374)
+
+[node name="BaseWall" type="StaticBody2D" unique_id=738383468]
+collision_layer = 17
+script = ExtResource("1_wall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1472026523]
+position = Vector2(0, -187)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Boot" type="TextureRect" parent="." unique_id=46105565]
+offset_left = -10.0
+offset_top = -64.0
+offset_right = 10.0
+texture = ExtResource("2_78c35")
+stretch_mode = 1
+
+[node name="Body" type="TextureRect" parent="." unique_id=1121149199]
+offset_left = -10.0
+offset_top = -374.0
+offset_right = 10.0
+offset_bottom = -64.0
+texture = ExtResource("3_1nwc3")
+stretch_mode = 1
