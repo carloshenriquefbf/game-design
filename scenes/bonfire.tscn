@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://calirktvkpcvs"]
+
+[ext_resource type="PackedScene" path="res://scenes/base_illumination_asset.tscn" id="1_jmhiw"]
+[ext_resource type="Texture2D" uid="uid://vagoujjmhnpr" path="res://sprites/assets/cauldron/cauldron-off.png" id="2_8aldm"]
+[ext_resource type="Texture2D" uid="uid://c53jten3glsjv" path="res://sprites/assets/bonfire/Bonfire_1.png" id="3_o0yqv"]
+[ext_resource type="Texture2D" uid="uid://cjui5p8ff3yo0" path="res://sprites/assets/bonfire/Bonfire_2.png" id="4_6t6eb"]
+[ext_resource type="Texture2D" uid="uid://btfqkh50q6mph" path="res://sprites/assets/bonfire/Bonfire_3.png" id="5_2npm3"]
+[ext_resource type="Texture2D" uid="uid://cllmabv806mhk" path="res://sprites/assets/bonfire/Bonfire_4.png" id="6_3kp8y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uelfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8aldm")
+}],
+"loop": 0,
+"name": &"blown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o0yqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6t6eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2npm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3kp8y")
+}],
+"loop": 1,
+"name": &"lit",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
+size = Vector2(80, 26.25)
+
+[node name="BaseIlluminationAsset" unique_id=1284805636 instance=ExtResource("1_jmhiw")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+scale = Vector2(4.354167, 3.9469697)
+sprite_frames = SubResource("SpriteFrames_uelfo")
+animation = &"lit"
+frame_progress = 0.0785491
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2" unique_id=180619714]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=733715664]
+position = Vector2(0, 37.125)
+shape = SubResource("RectangleShape2D_4ahnf")
