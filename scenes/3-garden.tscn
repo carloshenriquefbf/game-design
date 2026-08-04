@@ -45,18 +45,18 @@ offset_bottom = 720.0
 texture = ExtResource("2_6xyv8")
 
 [node name="LeftBorderWall" parent="." index="1"]
+visible = false
 offset_left = -10.0
 offset_top = -19.0
 offset_right = 54.0
 offset_bottom = 843.0
-texture = ExtResource("3_7aayv")
 
 [node name="RightBorderWall" parent="." index="2"]
+visible = false
 offset_left = 1270.0
 offset_top = -24.0
 offset_right = 1334.0
 offset_bottom = 725.0
-texture = ExtResource("3_7aayv")
 
 [node name="TopBorderWall" parent="." index="3"]
 offset_left = -3.0
@@ -101,13 +101,6 @@ offset_left = -10.0
 offset_top = -19.0
 offset_right = 54.0
 offset_bottom = 173.0
-texture = ExtResource("3_7aayv")
-
-[node name="LeftHedge8" type="TextureRect" parent="." index="7" unique_id=1740837589]
-offset_left = -10.0
-offset_top = 301.0
-offset_right = 54.0
-offset_bottom = 493.0
 texture = ExtResource("3_7aayv")
 
 [node name="LeftHedge9" type="TextureRect" parent="." index="8" unique_id=498053772]
