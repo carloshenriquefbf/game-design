@@ -22,13 +22,13 @@
 size = Vector2(54.875, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
-size = Vector2(957, 13)
+size = Vector2(957, 30.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltkc"]
-size = Vector2(704, 14.5)
+size = Vector2(704, 47.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knj50"]
-size = Vector2(54.375, 246.25)
+size = Vector2(54.375, 160)
 
 [sub_resource type="Resource" id="Resource_garden_key_door"]
 resource_local_to_scene = true
@@ -40,8 +40,9 @@ label = "Find the key and open the locked exit door"
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("1_1vx8f")]
 
 [node name="Background" parent="." index="0" unique_id=841275155]
+offset_top = 32.0
 offset_right = 1280.0
-offset_bottom = 720.0
+offset_bottom = 752.0
 texture = ExtResource("2_6xyv8")
 
 [node name="LeftBorderWall" parent="." index="1"]
@@ -77,173 +78,197 @@ position = Vector2(166.875, 448)
 shape = SubResource("RectangleShape2D_47uty")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="5" unique_id=1537367228]
-position = Vector2(672, 264)
+position = Vector2(672, 272.75)
 shape = SubResource("RectangleShape2D_4ahnf")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="6" unique_id=1733474262]
-position = Vector2(672, 376.75)
+position = Vector2(672, 472)
 shape = SubResource("RectangleShape2D_6ltkc")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="7" unique_id=1582169336]
-position = Vector2(1172.5625, 448)
+position = Vector2(1168, 448)
 shape = SubResource("RectangleShape2D_47uty")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="8" unique_id=999085430]
-position = Vector2(345.625, 492.875)
+position = Vector2(345.625, 536)
 shape = SubResource("RectangleShape2D_knj50")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="9" unique_id=534480096]
-position = Vector2(987.1875, 488)
+position = Vector2(1000, 528.3047)
 shape = SubResource("RectangleShape2D_knj50")
 
-[node name="LeftHedge1" type="TextureRect" parent="." index="6" unique_id=795821012]
-offset_left = -10.0
-offset_top = -19.0
-offset_right = 54.0
-offset_bottom = 173.0
-texture = ExtResource("3_7aayv")
-
-[node name="LeftHedge9" type="TextureRect" parent="." index="8" unique_id=498053772]
+[node name="LeftHedge9" type="TextureRect" parent="." index="6" unique_id=498053772]
 offset_left = 136.0
 offset_top = 400.0
 offset_right = 200.0
 offset_bottom = 592.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge10" type="TextureRect" parent="." index="9" unique_id=1819645897]
+[node name="InnerWall6" type="TextureRect" parent="." index="7" unique_id=600000002]
+offset_left = 312.0
+offset_top = 360.0
+offset_right = 1016.0
+offset_bottom = 496.0
+texture = ExtResource("4_gx8up")
+stretch_mode = 1
+
+[node name="LeftHedge10" type="TextureRect" parent="." index="8" unique_id=1819645897]
 offset_left = 136.0
 offset_top = 248.0
 offset_right = 200.0
 offset_bottom = 440.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge11" type="TextureRect" parent="." index="10" unique_id=1383831112]
+[node name="LeftHedge11" type="TextureRect" parent="." index="9" unique_id=1383831112]
 offset_left = -8.0
 offset_top = 144.0
 offset_right = 56.0
 offset_bottom = 336.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge2" type="TextureRect" parent="." index="11" unique_id=1575067083]
+[node name="LeftHedge2" type="TextureRect" parent="." index="10" unique_id=1575067083]
 offset_left = 312.0
 offset_top = 360.0
 offset_right = 376.0
 offset_bottom = 552.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge3" type="TextureRect" parent="." index="12" unique_id=1129513275]
+[node name="LeftHedge3" type="TextureRect" parent="." index="11" unique_id=1129513275]
 offset_left = -10.0
 offset_top = 301.0
 offset_right = 54.0
 offset_bottom = 493.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge4" type="TextureRect" parent="." index="13" unique_id=2098528698]
+[node name="LeftHedge4" type="TextureRect" parent="." index="12" unique_id=2098528698]
 offset_left = -10.0
 offset_top = 461.0
 offset_right = 54.0
 offset_bottom = 653.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge5" type="TextureRect" parent="." index="14" unique_id=1458412261]
+[node name="LeftHedge5" type="TextureRect" parent="." index="13" unique_id=1458412261]
 offset_left = -10.0
 offset_top = 621.0
 offset_right = 54.0
 offset_bottom = 813.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge12" type="TextureRect" parent="." index="15" unique_id=487718787]
-offset_left = 960.0
-offset_top = 368.0
-offset_right = 1024.0
-offset_bottom = 560.0
+[node name="LeftHedge12" type="TextureRect" parent="." index="14" unique_id=487718787]
+offset_left = 968.0
+offset_top = 360.0
+offset_right = 1032.0
+offset_bottom = 552.0
 texture = ExtResource("3_7aayv")
 
-[node name="RightHedge1" type="TextureRect" parent="." index="16" unique_id=23471555]
+[node name="RightHedge1" type="TextureRect" parent="." index="15" unique_id=23471555]
 offset_left = 1270.0
 offset_top = -24.0
 offset_right = 1334.0
 offset_bottom = 168.0
 texture = ExtResource("3_7aayv")
 
-[node name="RightHedge2" type="TextureRect" parent="." index="17" unique_id=291019119]
+[node name="RightHedge2" type="TextureRect" parent="." index="16" unique_id=291019119]
 offset_left = 1270.0
 offset_top = 136.0
 offset_right = 1334.0
 offset_bottom = 328.0
 texture = ExtResource("3_7aayv")
 
-[node name="RightHedge3" type="TextureRect" parent="." index="18" unique_id=1135989746]
+[node name="RightHedge3" type="TextureRect" parent="." index="17" unique_id=1135989746]
 offset_left = 1270.0
 offset_top = 296.0
 offset_right = 1334.0
 offset_bottom = 488.0
 texture = ExtResource("3_7aayv")
 
-[node name="RightHedge4" type="TextureRect" parent="." index="19" unique_id=319451176]
+[node name="RightHedge4" type="TextureRect" parent="." index="18" unique_id=319451176]
 offset_left = 1270.0
 offset_top = 456.0
 offset_right = 1334.0
 offset_bottom = 648.0
 texture = ExtResource("3_7aayv")
 
-[node name="RightHedge5" type="TextureRect" parent="." index="20" unique_id=582979081]
+[node name="RightHedge5" type="TextureRect" parent="." index="19" unique_id=582979081]
 offset_left = 1270.0
 offset_top = 616.0
 offset_right = 1334.0
 offset_bottom = 808.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge13" type="TextureRect" parent="." index="21" unique_id=1697289581]
+[node name="LeftHedge13" type="TextureRect" parent="." index="20" unique_id=1697289581]
 offset_left = 1632.0
 offset_top = 840.0
 offset_right = 1696.0
 offset_bottom = 1032.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge7" type="TextureRect" parent="." index="22" unique_id=1014120973]
+[node name="LeftHedge7" type="TextureRect" parent="." index="21" unique_id=1014120973]
 offset_left = 1136.0
 offset_top = 248.0
 offset_right = 1200.0
 offset_bottom = 440.0
 texture = ExtResource("3_7aayv")
 
-[node name="LeftHedge14" type="TextureRect" parent="." index="23" unique_id=1142559372]
+[node name="LeftHedge14" type="TextureRect" parent="." index="22" unique_id=1142559372]
 offset_left = 1136.0
 offset_top = 392.0
 offset_right = 1200.0
 offset_bottom = 584.0
 texture = ExtResource("3_7aayv")
 
-[node name="Boot1" type="TextureRect" parent="." index="24" unique_id=1856296025]
+[node name="InnerWall5" type="TextureRect" parent="." index="23" unique_id=600000001]
+offset_left = 192.0
+offset_top = 160.0
+offset_right = 704.0
+offset_bottom = 296.0
+texture = ExtResource("4_gx8up")
+stretch_mode = 1
+
+[node name="InnerWall7" type="TextureRect" parent="." index="24" unique_id=1584966133]
+offset_left = 632.0
+offset_top = 160.0
+offset_right = 1144.0
+offset_bottom = 296.0
+texture = ExtResource("4_gx8up")
+stretch_mode = 1
+
+[node name="LeftHedge1" type="TextureRect" parent="." index="25" unique_id=795821012]
+offset_left = -10.0
+offset_top = -19.0
+offset_right = 54.0
+offset_bottom = 173.0
+texture = ExtResource("3_7aayv")
+
+[node name="Boot1" type="TextureRect" parent="." index="26" unique_id=1856296025]
 offset_left = 136.0
 offset_top = 576.0
 offset_right = 200.0
 offset_bottom = 648.0
 texture = ExtResource("5_omrk1")
 
-[node name="Boot2" type="TextureRect" parent="." index="25" unique_id=368019707]
+[node name="Boot2" type="TextureRect" parent="." index="27" unique_id=368019707]
 offset_left = 312.0
 offset_top = 552.0
 offset_right = 376.0
 offset_bottom = 624.0
 texture = ExtResource("5_omrk1")
 
-[node name="Boot3" type="TextureRect" parent="." index="26" unique_id=10266130]
-offset_left = 960.0
+[node name="Boot3" type="TextureRect" parent="." index="28" unique_id=10266130]
+offset_left = 968.0
 offset_top = 552.0
-offset_right = 1024.0
+offset_right = 1032.0
 offset_bottom = 624.0
 texture = ExtResource("5_omrk1")
 
-[node name="Boot4" type="TextureRect" parent="." index="27" unique_id=1849462814]
+[node name="Boot4" type="TextureRect" parent="." index="29" unique_id=1849462814]
 offset_left = 1136.0
 offset_top = 576.0
 offset_right = 1200.0
 offset_bottom = 648.0
 texture = ExtResource("5_omrk1")
 
-[node name="Knight" parent="." index="28" unique_id=675437740 instance=ExtResource("5_q5hcv")]
+[node name="Knight" parent="." index="30" unique_id=675437740 instance=ExtResource("5_q5hcv")]
 position = Vector2(112, 672)
 
 [node name="PatrolRoute" type="Node2D" parent="Knight" index="5" unique_id=1412302640]
@@ -251,8 +276,8 @@ position = Vector2(112, 672)
 [node name="Marker2D" type="Marker2D" parent="Knight/PatrolRoute" index="0" unique_id=782334912]
 position = Vector2(1088, 0)
 
-[node name="Knight2" parent="." index="29" unique_id=836817332 instance=ExtResource("5_q5hcv")]
-position = Vector2(1088, 320)
+[node name="Knight2" parent="." index="31" unique_id=836817332 instance=ExtResource("5_q5hcv")]
+position = Vector2(1112, 328)
 
 [node name="PatrolRoute" type="Node2D" parent="Knight2" index="5" unique_id=1727546774]
 
@@ -261,26 +286,26 @@ position = Vector2(-832, 0)
 
 [node name="Marker2D2" type="Marker2D" parent="Knight2/PatrolRoute" index="1" unique_id=694194432]
 
-[node name="Knight3" parent="." index="30" unique_id=1778619432 instance=ExtResource("5_q5hcv")]
-position = Vector2(904, 448)
+[node name="Knight3" parent="." index="32" unique_id=1778619432 instance=ExtResource("5_q5hcv")]
+position = Vector2(904, 536)
 
 [node name="PatrolRoute" type="Node2D" parent="Knight3" index="5" unique_id=1228314209]
 
 [node name="Marker2D" type="Marker2D" parent="Knight3/PatrolRoute" index="0" unique_id=268264904]
-position = Vector2(-576, 0)
+position = Vector2(-456, 8)
 
 [node name="Marker2D2" type="Marker2D" parent="Knight3/PatrolRoute" index="1" unique_id=77860769]
 
 [node name="Marker2D3" type="Marker2D" parent="Knight3/PatrolRoute" index="2" unique_id=1635790384]
-position = Vector2(0, 128)
+position = Vector2(-8, 104)
 
 [node name="Marker2D4" type="Marker2D" parent="Knight3/PatrolRoute" index="3" unique_id=842827617]
-position = Vector2(-576, 128)
+position = Vector2(-456, 104)
 
-[node name="InvisibilityPotion" parent="." index="31" unique_id=611741332 instance=ExtResource("6_f1oig")]
-position = Vector2(552, 504)
+[node name="InvisibilityPotion" parent="." index="33" unique_id=611741332 instance=ExtResource("6_f1oig")]
+position = Vector2(568, 592)
 
-[node name="Knight4" parent="." index="32" unique_id=722225621 instance=ExtResource("5_q5hcv")]
+[node name="Knight4" parent="." index="34" unique_id=722225621 instance=ExtResource("5_q5hcv")]
 position = Vector2(128, 192)
 
 [node name="PatrolRoute" type="Node2D" parent="Knight4" index="5" unique_id=1588609029]
@@ -290,25 +315,25 @@ position = Vector2(1088, 0)
 
 [node name="Marker2D2" type="Marker2D" parent="Knight4/PatrolRoute" index="1" unique_id=1388300518]
 
-[node name="ExitDoor" parent="." index="33" unique_id=2060408876 instance=ExtResource("7_g0f4c")]
+[node name="ExitDoor" parent="." index="35" unique_id=2060408876 instance=ExtResource("7_g0f4c")]
 position = Vector2(1144, 56)
 
-[node name="Key" parent="." index="34" unique_id=1240235012 instance=ExtResource("8_qwtpx")]
+[node name="Key" parent="." index="36" unique_id=1240235012 instance=ExtResource("8_qwtpx")]
 position = Vector2(256, 392)
 
-[node name="BaseIlluminationAsset" parent="." index="35" unique_id=1284805636 instance=ExtResource("9_g0f4c")]
-position = Vector2(672, 480)
+[node name="BaseIlluminationAsset" parent="." index="37" unique_id=1284805636 instance=ExtResource("9_g0f4c")]
+position = Vector2(704, 568)
 
-[node name="WindBag" parent="." index="36" unique_id=2130989893 instance=ExtResource("10_qwtpx")]
+[node name="WindBag" parent="." index="38" unique_id=2130989893 instance=ExtResource("10_qwtpx")]
 position = Vector2(1216, 192)
 
-[node name="Player" parent="." index="37" unique_id=882773366 instance=ExtResource("11_qwtpx")]
-position = Vector2(1232, 664)
+[node name="Player" parent="." index="39" unique_id=882773366 instance=ExtResource("11_qwtpx")]
+position = Vector2(1208, 664)
 
-[node name="LevelObjectives" type="Node" parent="." index="38" unique_id=500000001]
+[node name="LevelObjectives" type="Node" parent="." index="40" unique_id=500000001]
 script = ExtResource("12_lxa78")
 objectives = Array[ExtResource("13_lku81")]([SubResource("Resource_garden_key_door")])
 
-[node name="HUD" parent="." index="39" unique_id=500000008 instance=ExtResource("15_hud")]
+[node name="HUD" parent="." index="41" unique_id=500000008 instance=ExtResource("15_hud")]
 
-[node name="PauseMenu" parent="." index="40" unique_id=500000009 instance=ExtResource("16_pause_menu")]
+[node name="PauseMenu" parent="." index="42" unique_id=500000009 instance=ExtResource("16_pause_menu")]
