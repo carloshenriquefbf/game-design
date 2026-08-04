@@ -5,6 +5,8 @@ sombria passando por três áreas (corredor, cozinha e jardim), desviando
 dos cones de visão dos guardas, coletando itens e cumprindo os objetivos
 de cada fase até chegar à saída.
 
+Jogue agora direto no seu navegador! Disponível em: https://carloshenriquefbf.itch.io/ponto-cego
+
 O documento de design completo está em [`SGDD.md`](SGDD.md).
 
 Feito com Godot, com apoio do Claude Code.
