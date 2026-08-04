@@ -27,7 +27,7 @@ id = &"garden_key_door"
 label = "Find the key and open the locked exit door"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47uty"]
-size = Vector2(54.875, 384)
+size = Vector2(57.09375, 348)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
 size = Vector2(957, 30.5)
@@ -36,7 +36,7 @@ size = Vector2(957, 30.5)
 size = Vector2(704, 47.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knj50"]
-size = Vector2(54.375, 160)
+size = Vector2(57.71875, 118.84766)
 
 [node name="BaseMap" unique_id=367366722 instance=ExtResource("1_1vx8f")]
 
@@ -170,10 +170,10 @@ script = ExtResource("12_lxa78")
 objectives = Array[ExtResource("13_lku81")]([SubResource("Resource_garden_key_door")])
 
 [node name="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="1" unique_id=1029666786]
-position = Vector2(632, 104)
+position = Vector2(632, 61)
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="4" unique_id=1881309975]
-position = Vector2(150.875, 448)
+position = Vector2(149.54688, 440)
 shape = SubResource("RectangleShape2D_47uty")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="5" unique_id=1537367228]
@@ -185,15 +185,15 @@ position = Vector2(656, 472)
 shape = SubResource("RectangleShape2D_6ltkc")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="7" unique_id=1582169336]
-position = Vector2(1152, 448)
+position = Vector2(1152.2188, 438)
 shape = SubResource("RectangleShape2D_47uty")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="8" unique_id=999085430]
-position = Vector2(329.625, 536)
+position = Vector2(328.85938, 525.5762)
 shape = SubResource("RectangleShape2D_knj50")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="MapBorder" parent_id_path=PackedInt32Array(1747597444) index="9" unique_id=534480096]
-position = Vector2(984, 528.3047)
+position = Vector2(983.09375, 518.15234)
 shape = SubResource("RectangleShape2D_knj50")
 
 [node name="LeftHedge9" type="TextureRect" parent="." index="11" unique_id=498053772]
@@ -339,7 +339,7 @@ offset_right = 38.0
 offset_bottom = 173.0
 texture = ExtResource("3_7aayv")
 
-[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="." index="33" unique_id=806840154]
 stream = ExtResource("17_gameplay_music")
 volume_db = -12.0
 autoplay = true

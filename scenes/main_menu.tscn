@@ -1,9 +1,31 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/base_screen.tscn" id="1_base"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_menu"]
 [ext_resource type="AudioStream" uid="uid://b3a2yuxmj73lw" path="res://sounds/Click-Button-Switch/Click1.wav" id="3_click_sfx"]
 [ext_resource type="AudioStream" uid="uid://ca02hok6psg83" path="res://sounds/menu.wav" id="4_menu_music"]
+[ext_resource type="Texture2D" uid="uid://d4fao8c58of2p" path="res://backgrounds/HR_Dark Gothic Castle.png" id="5_castle_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0, 0, 0, 0.55)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0, 0, 0, 0.72)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0, 0, 0, 0.88)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="MainMenu" instance=ExtResource("1_base")]
 script = ExtResource("2_menu")
@@ -11,6 +33,26 @@ title_text = "Ponto Cego"
 title_anchor_top = 0.35
 click_sfx = ExtResource("3_click_sfx")
 menu_music = ExtResource("4_menu_music")
+
+[node name="Background" parent="." index="0"]
+z_index = -2
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+mouse_filter = 2
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_castle_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" parent="." index="1"]
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,16 +69,25 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="Buttons"]
 layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "Jogar"
 
 [node name="InstructionsButton" type="Button" parent="Buttons"]
 layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "Instruções"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
 custom_minimum_size = Vector2(200, 48)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "Sair"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
