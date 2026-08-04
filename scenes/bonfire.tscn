@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://calirktvkpcvs"]
 
 [ext_resource type="PackedScene" path="res://scenes/base_illumination_asset.tscn" id="1_jmhiw"]
-[ext_resource type="Texture2D" uid="uid://vagoujjmhnpr" path="res://sprites/assets/cauldron/cauldron-off.png" id="2_8aldm"]
+[ext_resource type="Texture2D" uid="uid://1ejcn4q16l1d" path="res://sprites/assets/bonfire/blown_Bonfire_1.png" id="2_8aldm"]
 [ext_resource type="Texture2D" uid="uid://c53jten3glsjv" path="res://sprites/assets/bonfire/Bonfire_1.png" id="3_o0yqv"]
 [ext_resource type="Texture2D" uid="uid://cjui5p8ff3yo0" path="res://sprites/assets/bonfire/Bonfire_2.png" id="4_6t6eb"]
 [ext_resource type="Texture2D" uid="uid://btfqkh50q6mph" path="res://sprites/assets/bonfire/Bonfire_3.png" id="5_2npm3"]
