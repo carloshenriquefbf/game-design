@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/instructions_modal.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/instructions_content.tscn" id="2_content"]
+[ext_resource type="AudioStream" uid="uid://b3a2yuxmj73lw" path="res://sounds/Click-Button-Switch/Click1.wav" id="3_click_sfx"]
 
 [node name="InstructionsModal" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_script")
+click_sfx = ExtResource("3_click_sfx")
 
 [node name="Panel" type="Control" parent="."]
 layout_mode = 1

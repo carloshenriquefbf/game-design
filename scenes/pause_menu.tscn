@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/instructions_modal.tscn" id="2_modal"]
 [ext_resource type="PackedScene" path="res://scenes/confirm_buttons.tscn" id="3_confirm"]
+[ext_resource type="AudioStream" uid="uid://b3a2yuxmj73lw" path="res://sounds/Click-Button-Switch/Click1.wav" id="4_click_sfx"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 layer = 10
 process_mode = 3
 script = ExtResource("1_script")
+click_sfx = ExtResource("4_click_sfx")
 
 [node name="Root" type="Control" parent="."]
 visible = false

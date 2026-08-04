@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://2l3hnlhgekwg" path="res://scenes/cauldron1.tscn" id="20_4lj2k"]
 [ext_resource type="PackedScene" uid="uid://bj2yy1xsagx7v" path="res://scenes/hud.tscn" id="21_hud"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
+[ext_resource type="AudioStream" uid="uid://yim3flm6uj61" path="res://sounds/gameplay.wav" id="23_gameplay_music"]
 
 [sub_resource type="Resource" id="Resource_tower_key_door"]
 resource_local_to_scene = true
@@ -193,3 +194,8 @@ position = Vector2(640, 384)
 [node name="HUD" parent="." index="12" unique_id=68822290 instance=ExtResource("21_hud")]
 
 [node name="PauseMenu" parent="." index="13" unique_id=1041599193 instance=ExtResource("22_pause_menu")]
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_gameplay_music")
+volume_db = -12.0
+autoplay = true

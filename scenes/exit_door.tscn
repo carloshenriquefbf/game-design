@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btaryeskvx3vq"]
 
 [ext_resource type="Script" uid="uid://c5pvgi1yr7swr" path="res://scripts/exit_door.gd" id="1_syxuu"]
+[ext_resource type="AudioStream" uid="uid://wl8o0b80wxmi" path="res://sounds/Door/DoorKnobOpening1.wav" id="2_open_sound"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahnf"]
 size = Vector2(128, 64)
@@ -35,5 +36,8 @@ offset_left = -8.0
 offset_right = 72.0
 offset_bottom = 64.0
 color = Color(0, 0, 0, 1)
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_open_sound")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

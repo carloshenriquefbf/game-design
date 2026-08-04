@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://v2wmegd5tn5g" path="res://sprites/knight/Warrior_Idle.png" id="1_3i0j8"]
 [ext_resource type="Script" uid="uid://b7pwc5g4lau3o" path="res://scripts/knight.gd" id="1_qxgmm"]
 [ext_resource type="Texture2D" uid="uid://bgw8bbt316oj4" path="res://sprites/knight/Warrior_Run.png" id="2_qxgmm"]
+[ext_resource type="AudioStream" uid="uid://bssoy6yr5cpr8" path="res://sounds/Alarm(Loopable)/Alarm2(Fast).wav" id="3_alert_sound"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3i0j8")
@@ -139,3 +140,4 @@ color = Color(1, 0.9, 0.2, 0.25)
 collision_mask = 16
 
 [node name="AlertSound" type="AudioStreamPlayer2D" parent="." unique_id=1298475062]
+stream = ExtResource("3_alert_sound")

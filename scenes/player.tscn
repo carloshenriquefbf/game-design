@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c2aqtaluavxed" path="res://sprites/player/Pawn_Idle.png" id="1_g2els"]
 [ext_resource type="Script" uid="uid://dbfarp7wcom1j" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://01ngkys0cn83" path="res://sprites/player/Pawn_Run.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://cgedwpi42w60k" path="res://sounds/Drinking/DrinkingSingleGulp1.wav" id="3_drink_sound"]
+[ext_resource type="AudioStream" uid="uid://d2fxtit6bj15j" path="res://sounds/WingFlap/WingFlap1.wav" id="4_wind_sound"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_g2els")
@@ -133,5 +135,7 @@ shape = SubResource("RectangleShape2D_4ahnf")
 [node name="InvisibilityTimer" type="Timer" parent="." unique_id=1833963904]
 
 [node name="DrinkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_drink_sound")
 
 [node name="WindSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wind_sound")

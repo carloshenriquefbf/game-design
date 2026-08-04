@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/base_screen.tscn" id="1_base"]
 [ext_resource type="Script" path="res://scripts/instructions_screen.gd" id="2_script"]
 [ext_resource type="PackedScene" path="res://scenes/instructions_content.tscn" id="3_content"]
+[ext_resource type="AudioStream" uid="uid://b3a2yuxmj73lw" path="res://sounds/Click-Button-Switch/Click1.wav" id="4_click_sfx"]
 
 [node name="InstructionsScreen" instance=ExtResource("1_base")]
 script = ExtResource("2_script")
 title_text = "Instruções"
 title_anchor_top = 0.08
+click_sfx = ExtResource("4_click_sfx")
 
 [node name="ContentMargin" type="MarginContainer" parent="."]
 layout_mode = 1

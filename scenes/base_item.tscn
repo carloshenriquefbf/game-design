@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/base_item.gd" id="1_base_item"]
+[ext_resource type="AudioStream" uid="uid://dl630uu7a6bf8" path="res://sounds/Coin/Coin1.wav" id="2_pickup_sound"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_base"]
 size = Vector2(32, 32)
@@ -22,5 +23,6 @@ color = Color(0.7, 0.7, 0.7, 1)
 shape = SubResource("RectangleShape2D_base")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pickup_sound")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

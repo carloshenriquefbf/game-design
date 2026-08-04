@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/base_screen.tscn" id="1_base"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_menu"]
+[ext_resource type="AudioStream" uid="uid://b3a2yuxmj73lw" path="res://sounds/Click-Button-Switch/Click1.wav" id="3_click_sfx"]
+[ext_resource type="AudioStream" uid="uid://ca02hok6psg83" path="res://sounds/menu.wav" id="4_menu_music"]
 
 [node name="MainMenu" instance=ExtResource("1_base")]
 script = ExtResource("2_menu")
 title_text = "Ponto Cego"
 title_anchor_top = 0.35
+click_sfx = ExtResource("3_click_sfx")
+menu_music = ExtResource("4_menu_music")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -38,3 +42,4 @@ text = "Sair"
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0
