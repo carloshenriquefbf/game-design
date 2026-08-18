@@ -9,7 +9,7 @@ Jogue agora direto no seu navegador! Disponível em: https://carloshenriquefbf.i
 
 O documento de design completo está em [`SGDD.md`](SGDD.md).
 
-Feito com Godot, com apoio do Claude Code.
+Feito com Godot, com apoio do Claude Code, usando o [godot-mcp](https://github.com/Coding-Solo/godot-mcp).
 
 ![gameplay](misc/gameplay.png)
 
